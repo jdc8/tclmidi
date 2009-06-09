@@ -1,0 +1,143 @@
+[comment {-*- tcl -*- doctools manpage}]
+[manpage_begin midistreamdll n 0.4]
+[copyright {2007-2008 Jos Decoster <jos.decoster@gmail.com>}]
+[moddesc {Wrapper for the Win32 Midi stream API}]
+[titledesc {Wrapper for the Win32 Midi stream API}]
+[require Tcl 8.5]
+[description]
+
+[para]
+
+This page describes the Tcl [package midistreamdll] package, a wrapper for the
+Win32 Midi stream API. Commands to query the available Midi devices, open a Midi
+stream device and send Midi data to it are discussed here.
+
+[para]
+
+The [package midistreamdll] package adds the namespace midistreamdll to the Tcl
+interpreter in which it is loaded. In this namespace, the main commands to
+work with midi stream are created:
+
+[list_begin definitions]
+[lst_item midistreamdll::devs]
+[lst_item midistreamdll::open]
+[lst_item midistreamdll::header]
+[list_end]
+
+[section midistreamdll::devs]
+
+[list_begin definitions]
+
+[call [cmd midistreamdll::devs]]
+
+This command returns a list of names of the available Midi devices. 
+
+[list_end]
+
+[section midistreamdll::open]
+
+[list_begin definitions]
+
+[call [cmd midistreamdll::open] [arg deviceId]]
+
+This command will open the specified Midi stream device and returns a unique
+Midi stream device id. This id should be used to manipulate the Midi device
+later on. A Midi device is specified as an integer index in the list of Midi
+devices as obtained with the [cmd midistreamdll::devs] command.
+
+[call [arg midiStreamId] [method close]]
+
+Closes the Midi stream devices.
+
+[call [arg midiStreamId] [method out] [arg headerId]]
+
+Stream the specified Midi header, which must be created with the 
+[cmd midistreamdll::header] command, to the Midi stream device.
+
+[call [arg midiStreamId] [method pause]]
+
+Pauses the Midi stream device.
+
+[call [arg midiStreamId] [method play]]
+
+Starts playback of the Midi stream device.
+
+[call [arg midiStreamId] [method position]]
+
+Returns the current position in the stream being sequenced as Midi ticks.
+
+[call [arg midiStreamId] [method set] [arg option] [arg value]]
+
+Set the specified option. Known options are:
+
+[list_begin opt]
+
+[opt_def -timediv integer]
+
+Set the number of ticks per beat.
+
+[opt_def "" ""]
+
+[list_end]
+
+[call [arg midiStreamId] [method short] [arg byte0] [opt [arg byte1]] [opt [arg byte2]]]
+
+Immediately plays a short event on the Midi device.
+
+[call [arg midiStreamId] [method stop]]
+
+Stops playback of the Midi stream device.
+
+[list_end]
+
+[section midistreamdll::header]
+
+[list_begin definitions]
+
+[call [cmd midistreamdll::header]]
+
+This commands creates a new Midi header, suitable for use with the Midi stream
+[cmd out] command and returns a unique header id. This id should be used to
+manipulate the Midi header later on.
+
+[call [arg headerId] [method add] [arg eventType] [arg deltaTime] [arg eventData]]
+
+Adds the specified event data to the Midi header with specified
+delta-time. Known event types are:
+
+[list_begin opt]
+
+[opt_def event "deltaTime byteList"]
+
+Adds event specified as a list of bytes to the Midi header. When an empty list
+is specified, a nop event is added. For 1 up to 3 bytes, the data is added as a
+short event. For more bytes, the data is added as a long event.
+
+[opt_def long "deltaTime byteList"]
+
+Adds event specified as a list of bytes to the Midi header. 
+
+[opt_def nop deltaTime]
+
+Adds nop event to the Midi header.
+
+[opt_def short "deltaTime byte0 ?byte1 ?byte2??"]
+
+Adds one, two or three bytes to the Midi header as short event.
+
+[opt_def tempo "deltaTime tempo"]
+
+Adds tempo event to the Midi header.
+
+[opt_def "" ""]
+
+[list_end]
+
+[call [arg headerId] [method destroy]]
+
+Destroys the Midi header.
+
+[list_end]
+
+[keywords midi stream]
+[manpage_end]

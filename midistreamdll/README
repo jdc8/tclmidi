@@ -1,0 +1,20 @@
+Tested with: 
+
+   - ActiveTcl 8.5 + Visual Studio 2008 (VC 9)
+
+Build:
+
+   - set TCLDIR in the Makefile
+
+   - type 'nmake'
+
+Install: 
+
+   - copy the midistreamdll.dll and pkgIndex.tcl to a midistream
+     directory where you tclsh can find it.
+
+Examples:
+
+   - examples\drums.tcl : a simple drum-machine
+
+   - examples\seq.tcl : a midi file player
