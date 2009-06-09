@@ -1,0 +1,49 @@
+2009-06-09 Jos Decoster <jos.decoster@gmail.com>
+
+	 * Imported in Google code, check svn repository for changes.
+
+2008-02-21 Jos Decoster <jos.decoster@gmail.com>
+
+	* midi.man: added new functions, removed old, updated examples
+
+2008-02-18 Jos Decoster <jos.decoster@gmail.com>
+
+	* midi.tcl: rewrite midi::file::flatten using new midi::make_abs and
+	midi::make_delta procs, removed midi::track::flatten proc.
+
+	* midi.tcl: new midi::merge, midi::make_abs, midi::make_delta and
+	midi::file::measure proc
+
+	* midi.test: update tests for new flatten command
+
+2007-04-29  Jos Decoster <jos.decoster@gmail.com>
+
+        * version 0.9
+
+	* midi.man: fixed typos and added note_off events for drum track
+	to avoid warnings raised by pmidi (contributed by Dave Joubert)
+
+2007-04-29  Mo DeJong  <mdejong@users.sourceforge.net>
+
+        * midi.tcl: Reimplement controller message
+	logic so that any controller number in the
+	range 0 to 127 is valid. The previous implementation
+	would generate an error if the controller number
+	was not found in the knownControllerNames table.
+	Rewrite the controller_number so that it no longer
+	accepts integers, this method is used only to
+	convert a controller name to a number.
+	* midi.test: Update test cases that deal
+	with controller number error messages. Read
+	controller number test file and check contents.
+	* MIDI/controllers.mid: Controller number
+	test file, this MIDI file contains a single
+	track that has a controller number message for
+	each valid controller number.
+       
+2007-01-24 Jos Decoster <jos.decoster@gmail.com>
+
+        * version 0.8
+	
+        * Convert to tcllib format
+	
