@@ -1,0 +1,1721 @@
+
+<!-- saved from url=(0045)http://jos.decoster.googlepages.com/midi.html -->
+<HTML><HEAD><META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<TITLE>midi - Midi file, track and event handling </TITLE>
+</HEAD><BODY>
+<H1> midi(n) 0.11  "Midi file, track and event handling"</H1>
+<H2><A name="name">NAME</A></H2>
+<P>
+</P><P> midi - Package to handle midi files, tracks and events
+
+
+
+
+</P><H2><A name="synopsis">SYNOPSIS</A></H2>
+<P>
+package require <B>Tcl 8.4</B><BR>
+<BR><TABLE border="1" width="100&percnt;" cellspacing="0" cellpadding="0"><TBODY><TR bgcolor="lightyellow"><TD bgcolor="lightyellow"><TABLE 0="" width="100&percnt;" cellspacing="0" cellpadding="0"><TBODY><TR valign="top"><TD><A href="http://jos.decoster.googlepages.com/midi.html#1"><B class="cmd">midi::file</B> ?<I class="arg">options</I>? ...</A></TD></TR>
+<TR valign="top"><TD><A href="http://jos.decoster.googlepages.com/midi.html#2"><I class="arg">midiFileId</I> <STRONG>destroy</STRONG></A></TD></TR>
+<TR valign="top"><TD><A href="http://jos.decoster.googlepages.com/midi.html#3"><I class="arg">midiFileId</I> <STRONG>reset</STRONG></A></TD></TR>
+<TR valign="top"><TD><A href="http://jos.decoster.googlepages.com/midi.html#4"><I class="arg">midiFileId</I> <STRONG>validate</STRONG></A></TD></TR>
+<TR valign="top"><TD><A href="http://jos.decoster.googlepages.com/midi.html#5"><I class="arg">midiFileId</I> <STRONG>validate_option</STRONG> <I class="arg">option</I> <I class="arg">value</I></A></TD></TR>
+<TR valign="top"><TD><A href="http://jos.decoster.googlepages.com/midi.html#6"><I class="arg">midiFileId</I> <STRONG>cget</STRONG> <I class="arg">option</I></A></TD></TR>
+<TR valign="top"><TD><A href="http://jos.decoster.googlepages.com/midi.html#7"><I class="arg">midiFileId</I> <STRONG>configure</STRONG></A></TD></TR>
+<TR valign="top"><TD><A href="http://jos.decoster.googlepages.com/midi.html#8"><I class="arg">midiFileId</I> <STRONG>configure</STRONG> <I class="arg">option</I></A></TD></TR>
+<TR valign="top"><TD><A href="http://jos.decoster.googlepages.com/midi.html#9"><I class="arg">midiFileId</I> <STRONG>configure</STRONG> <I class="arg">option value</I> ...</A></TD></TR>
+<TR valign="top"><TD><A href="http://jos.decoster.googlepages.com/midi.html#10"><I class="arg">midiFileId</I> <STRONG>read</STRONG> <I class="arg">fileName</I></A></TD></TR>
+<TR valign="top"><TD><A href="http://jos.decoster.googlepages.com/midi.html#11"><I class="arg">midiFileId</I> <STRONG>write</STRONG> <I class="arg">fileName</I> ?<I class="arg">option value ...</I>?</A></TD></TR>
+<TR valign="top"><TD><A href="http://jos.decoster.googlepages.com/midi.html#12"><I class="arg">midiFileId</I> <STRONG>dump</STRONG> ?<I class="arg">option value ...</I>?</A></TD></TR>
+<TR valign="top"><TD><A href="http://jos.decoster.googlepages.com/midi.html#13"><I class="arg">midiFileId</I> <STRONG>flatten</STRONG> ?<I class="arg">option value ...</I>?</A></TD></TR>
+<TR valign="top"><TD><A href="http://jos.decoster.googlepages.com/midi.html#14"><I class="arg">midiFileId</I> <STRONG>clicks</STRONG> <I class="arg">noteLength</I></A></TD></TR>
+<TR valign="top"><TD><A href="http://jos.decoster.googlepages.com/midi.html#15"><I class="arg">midiFileId</I> <STRONG>measure</STRONG> ?<I class="arg">option value ...</I>?</A></TD></TR>
+<TR valign="top"><TD><A href="http://jos.decoster.googlepages.com/midi.html#16"><B class="cmd">midi::track</B> ?<I class="arg">options</I>? ...</A></TD></TR>
+<TR valign="top"><TD><A href="http://jos.decoster.googlepages.com/midi.html#17"><I class="arg">midiTrackId</I> <STRONG>destroy</STRONG></A></TD></TR>
+<TR valign="top"><TD><A href="http://jos.decoster.googlepages.com/midi.html#18"><I class="arg">midiTrackId</I> <STRONG>reset</STRONG></A></TD></TR>
+<TR valign="top"><TD><A href="http://jos.decoster.googlepages.com/midi.html#19"><I class="arg">midiTrackId</I> <STRONG>validate</STRONG></A></TD></TR>
+<TR valign="top"><TD><A href="http://jos.decoster.googlepages.com/midi.html#20"><I class="arg">midiTrackId</I> <STRONG>validate_option</STRONG> <I class="arg">option</I> <I class="arg">value</I></A></TD></TR>
+<TR valign="top"><TD><A href="http://jos.decoster.googlepages.com/midi.html#21"><I class="arg">midiTrackId</I> <STRONG>cget</STRONG> <I class="arg">option</I></A></TD></TR>
+<TR valign="top"><TD><A href="http://jos.decoster.googlepages.com/midi.html#22"><I class="arg">midiTrackId</I> <STRONG>configure</STRONG></A></TD></TR>
+<TR valign="top"><TD><A href="http://jos.decoster.googlepages.com/midi.html#23"><I class="arg">midiTrackId</I> <STRONG>configure</STRONG> <I class="arg">option</I></A></TD></TR>
+<TR valign="top"><TD><A href="http://jos.decoster.googlepages.com/midi.html#24"><I class="arg">midiTrackId</I> <STRONG>configure</STRONG> <I class="arg">option value</I> ...</A></TD></TR>
+<TR valign="top"><TD><A href="http://jos.decoster.googlepages.com/midi.html#25"><I class="arg">midiTrackId</I> <STRONG>dump</STRONG></A></TD></TR>
+<TR valign="top"><TD><A href="http://jos.decoster.googlepages.com/midi.html#26"><B class="cmd">midi::event</B> <I class="arg">type</I> ?<I class="arg">options</I>? ...</A></TD></TR>
+<TR valign="top"><TD><A href="http://jos.decoster.googlepages.com/midi.html#27"><B class="cmd">midi::event::reset</B> <I class="arg">intList</I></A></TD></TR>
+<TR valign="top"><TD><A href="http://jos.decoster.googlepages.com/midi.html#28"><B class="cmd">midi::event::validate</B> <I class="arg">intList</I></A></TD></TR>
+<TR valign="top"><TD><A href="http://jos.decoster.googlepages.com/midi.html#29"><B class="cmd">midi::event::validate_option</B> <I class="arg">intList</I> ?<I class="arg">options</I>? ...</A></TD></TR>
+<TR valign="top"><TD><A href="http://jos.decoster.googlepages.com/midi.html#30"><B class="cmd">midi::event::cget</B> <I class="arg">intList</I> <I class="arg">option</I></A></TD></TR>
+<TR valign="top"><TD><A href="http://jos.decoster.googlepages.com/midi.html#31"><B class="cmd">midi::event::configure</B> <I class="arg">intList</I></A></TD></TR>
+<TR valign="top"><TD><A href="http://jos.decoster.googlepages.com/midi.html#32"><B class="cmd">midi::event::configure</B> <I class="arg">intList</I> <I class="arg">option</I></A></TD></TR>
+<TR valign="top"><TD><A href="http://jos.decoster.googlepages.com/midi.html#33"><B class="cmd">midi::event::configure</B> <I class="arg">intList</I> <I class="arg">option value</I> ...</A></TD></TR>
+<TR valign="top"><TD><A href="http://jos.decoster.googlepages.com/midi.html#34"><B class="cmd">midi::event::type</B> <I class="arg">intList</I></A></TD></TR>
+<TR valign="top"><TD><A href="http://jos.decoster.googlepages.com/midi.html#35"><B class="cmd">midi::event::type_meta_event</B> <I class="arg">intList</I></A></TD></TR>
+<TR valign="top"><TD><A href="http://jos.decoster.googlepages.com/midi.html#36"><B class="cmd">midi::event::dump</B> <I class="arg">intList</I></A></TD></TR>
+</TBODY></TABLE></TD></TR></TBODY></TABLE>
+</P><H2><A name="description">DESCRIPTION</A></H2>
+<P>
+</P><P>
+
+This page describes the Tcl <STRONG>midi</STRONG> package to process midi files. The
+commands to read, write, create and edit midi files are discussed here.
+
+</P><P>
+
+The <STRONG>midi</STRONG> package adds the namespace midi to the Tcl
+interpreter in which it is loaded. In this namespace, the main commands to
+work with midi files are created:
+
+</P><DL>
+<DT>midi::file</DT><DD>
+</DD><DT>midi::track</DT><DD>
+</DD><DT>midi::event</DT><DD>
+</DD></DL>
+
+<P> 
+
+The file and track commands have an object interface, much like Tk
+widgets. Midi events are represented as a list of integers.
+
+</P><H2><A name="midifile">midi::file</A></H2>
+<P>
+
+</P><DL>
+
+<DT><A name="1"><B class="cmd">midi::file</B> ?<I class="arg">options</I>? ...</A></DT><DD>
+
+
+This command will create a midi file object and returns a unique midi file
+id. This id should be used to manipulate the midi file later on. Known options
+are: 
+
+<BR><BR>
+<DL>
+
+<DT><STRONG>-type</STRONG> integer</DT><DD>
+
+Set the midi file type. Must be <STRONG>0</STRONG>, <STRONG>1</STRONG> or <STRONG>2</STRONG>. Default value is 1.
+
+<BR><BR>
+</DD><DT><STRONG>-time_division_type</STRONG> string</DT><DD>
+
+Set the time divisiob type used in the midi file. Must be 
+<STRONG>ticks_per_beat</STRONG> or <STRONG>frames_per_second</STRONG>. Default values is <STRONG>ticks_per_beat</STRONG>.
+
+<BR><BR>
+</DD><DT><STRONG>-ticks_per_beat</STRONG> integer</DT><DD>
+
+Sets the number of ticks per beat (quarter note), only used when the time 
+division type is <STRONG>ticks_per_beat</STRONG>. Default value is 480.
+
+<BR><BR>
+</DD><DT><STRONG>-frames_per_second</STRONG> integer</DT><DD>
+
+Set the number of frames per second, only used when the time division type is 
+<STRONG>frames_per_second</STRONG>. Default value is -1.
+
+<BR><BR>
+</DD><DT><STRONG>-ticks_per_frame</STRONG> integer</DT><DD>
+
+Set the number of ticks per frame, only used when the time division type is 
+<STRONG>frames_per_second</STRONG>. Default value is -1.
+
+<BR><BR>
+</DD><DT><STRONG>-tracks</STRONG> listOfTrackIds</DT><DD>
+
+Set the track to be included in the midi file. The tracks must be specified as
+a list of tracks id's obtained by calling the <B class="cmd">midi::track</B> command. By default, no tracks are added.
+
+<BR><BR>
+</DD><DT><STRONG></STRONG></DT><DD>
+
+</DD></DL>
+
+</DD><DT><A name="2"><I class="arg">midiFileId</I> <STRONG>destroy</STRONG></A></DT><DD>
+
+
+Reset and destroy a midi file object.
+
+<BR><BR>
+</DD><DT><A name="3"><I class="arg">midiFileId</I> <STRONG>reset</STRONG></A></DT><DD>
+
+
+Reset a midi file object. Resetting a midi file object will clear the type and
+timing information and destroy all tracks (with reference count zero) of the
+midi file.
+
+<BR><BR>
+</DD><DT><A name="4"><I class="arg">midiFileId</I> <STRONG>validate</STRONG></A></DT><DD>
+
+
+Validates a midi file object, including the tracks. Only the options required
+for a specific time division type are checked.
+
+<BR><BR>
+</DD><DT><A name="5"><I class="arg">midiFileId</I> <STRONG>validate_option</STRONG> <I class="arg">option</I> <I class="arg">value</I></A></DT><DD>
+
+
+Validates a midi file object-option value. All options will be validated, even
+if a specified option is not necessary according to the time division type. All
+options accepted by the <B class="cmd">midi::file</B> command can be specified.
+
+<BR><BR>
+</DD><DT><A name="6"><I class="arg">midiFileId</I> <STRONG>cget</STRONG> <I class="arg">option</I></A></DT><DD>
+
+
+Returns the current value of the configuration option given by <I class="arg">option</I>. 
+<I class="arg">Option</I> may have any of the values accepted by the 
+<B class="cmd">midi::file</B> command.
+
+<BR><BR>
+</DD><DT><A name="7"><I class="arg">midiFileId</I> <STRONG>configure</STRONG></A></DT><DD>
+
+
+Returns a list describing all of the available options. The returned list
+contains a sublist for each known option with the following elements: the
+option, the default value and the current value. Information is returned for
+all options accepted by the <B class="cmd">midi::file</B> command.
+
+<BR><BR>
+</DD><DT><A name="8"><I class="arg">midiFileId</I> <STRONG>configure</STRONG> <I class="arg">option</I></A></DT><DD>
+
+
+Returns list describing the named option. <I class="arg">Option</I> may have any of the
+values accepted by the <B class="cmd">midi::file</B> command. The returned list contains 3
+elements: the option, the default value and the current value.
+
+<BR><BR>
+</DD><DT><A name="9"><I class="arg">midiFileId</I> <STRONG>configure</STRONG> <I class="arg">option value</I> ...</A></DT><DD>
+
+
+Modifies the given midi file option(s) to have the given value(s). The command
+returns an empty string. <I class="arg">Option</I> may have any of the values accepted by
+the <B class="cmd">midi::file</B> command.
+
+<BR><BR>
+</DD><DT><A name="10"><I class="arg">midiFileId</I> <STRONG>read</STRONG> <I class="arg">fileName</I></A></DT><DD>
+
+
+Reads the specified midi file into the midi file object.
+
+<BR><BR>
+</DD><DT><A name="11"><I class="arg">midiFileId</I> <STRONG>write</STRONG> <I class="arg">fileName</I> ?<I class="arg">option value ...</I>?</A></DT><DD>
+
+
+Writes the contents of the midi file object into the specified file. Known
+options are:
+
+<BR><BR>
+<DL>
+
+<DT><STRONG>-running_status</STRONG> boolean</DT><DD>
+
+If set to true, the midi file will be written with running status, making the
+resulting output file smaller. If set to false (default), the midi file will be
+written without running status.
+
+<BR><BR>
+</DD><DT><STRONG>-tracks</STRONG> listOfTrackIds</DT><DD>
+
+Only write the specified tracks to the output file.
+
+<BR><BR>
+</DD><DT><STRONG></STRONG></DT><DD>
+
+</DD></DL>
+
+</DD><DT><A name="12"><I class="arg">midiFileId</I> <STRONG>dump</STRONG> ?<I class="arg">option value ...</I>?</A></DT><DD>
+
+
+Writes a textual representation of the midi file object contents into the file
+specified with the -file option. If no file is specified, returns the textual
+representation of the midi file as a string. Known options are:
+
+<BR><BR>
+<DL>
+
+<DT><STRONG>-file</STRONG> path</DT><DD>
+
+Dump the midi file to the specified output file.
+
+<BR><BR>
+</DD><DT><STRONG>-tracks</STRONG> listOfTrackIds</DT><DD>
+
+Only dump the specified tracks.
+
+<BR><BR>
+</DD><DT><STRONG></STRONG></DT><DD>
+
+</DD></DL>
+
+</DD><DT><A name="13"><I class="arg">midiFileId</I> <STRONG>flatten</STRONG> ?<I class="arg">option value ...</I>?</A></DT><DD>
+
+
+Creates a one track representation of a multi track midi file. This command
+will return a list of two element lists. The first element in each sub-list
+contains the delta time until the event associated with it can be
+processed. The second element in each sub-list contains a list of events,
+represented as lists of integers. Known options are:
+
+<BR><BR>
+<DL>
+
+<DT><STRONG>-include_meta</STRONG> listOfMetaEventTypes</DT><DD>
+
+Only include Meta events of specified types in the flattened
+output. Check <B class="cmd">midi::event::type_meta_event</B> for known Meta event
+types.
+
+<BR><BR>
+</DD><DT><STRONG>-no_meta</STRONG> boolean</DT><DD>
+
+Do not include Meta events in the flattened output.
+
+<BR><BR>
+</DD><DT><STRONG>-no_sys_ex</STRONG> boolean</DT><DD>
+
+Do not include SysEx events in the flattened output.
+
+<BR><BR>
+</DD><DT><STRONG>-tracks</STRONG> listOfTrackIds</DT><DD>
+
+Only flatten the specified tracks.
+
+<BR><BR>
+</DD><DT><STRONG></STRONG></DT><DD>
+
+</DD></DL>
+
+</DD><DT><A name="14"><I class="arg">midiFileId</I> <STRONG>clicks</STRONG> <I class="arg">noteLength</I></A></DT><DD>
+
+
+Calculates the length of a note in clicks for common note lengths. Lengths 
+understood by this method are: <STRONG>1</STRONG>, <STRONG>1.</STRONG>, <STRONG>1/2</STRONG>, 
+<STRONG>1/2.</STRONG>, <STRONG>1/2t</STRONG>, <STRONG>1/4</STRONG>, <STRONG>1/4.</STRONG>, <STRONG>1/4t</STRONG>, 
+<STRONG>1/8</STRONG>, <STRONG>1/8.</STRONG>, <STRONG>1/8t</STRONG>, <STRONG>1/16</STRONG>, <STRONG>1/16.</STRONG>, 
+<STRONG>1/16t</STRONG>, <STRONG>1/32</STRONG>, <STRONG>1/32.</STRONG>, <STRONG>1/32t</STRONG>, <STRONG>1/64</STRONG>, 
+<STRONG>1/64.</STRONG> and <STRONG>1/64t.</STRONG>  Lengths with a <STRONG>.</STRONG> (dot) add half of 
+the length to the fraction, lengths with a <STRONG>t</STRONG> are used for triplets. 
+This functions can only be used when the <STRONG>-time_division_type</STRONG> option is
+set to <STRONG>ticks_per_beat</STRONG> and the <STRONG>-ticks_per_beat</STRONG> option has been 
+initialised.
+
+<BR><BR>
+</DD><DT><A name="15"><I class="arg">midiFileId</I> <STRONG>measure</STRONG> ?<I class="arg">option value ...</I>?</A></DT><DD>
+
+
+This command can be used to generate event list from a simplied input format. By
+only specifying note names and durations, an event list suitable for midi-tracks
+can be obtained. This command will only generate note-on and note-off event,
+other event still need to be added to the event list with the <B class="cmd">midi::event</B>
+command. Only a list of non-overlapping notes can be specified. It durations of
+notes overlap, create different event-lists with multiple calls to this command
+and later on merge the resulting event lists with the <B class="cmd">midi::merge</B> command.
+
+<BR><BR>
+<DL>
+
+<DT><STRONG>-channel</STRONG> integer</DT><DD> Channel on which to play the specified notes.
+
+<BR><BR>
+</DD><DT><STRONG>-events</STRONG> listOfListOfNotes</DT><DD> A list of note-lists. Each such note-list
+contains a duration, a list of notes and optionally a velocity. A duration must
+be specified as a note-length understood by the <B class="cmd">midi::file::clicks</B>
+method. Notes can be specified using their midi note-number or their
+note-name. Check the <A href="http://jos.decoster.googlepages.com/midi.html#notes">Notes</A> section for valid note numbers and valid
+note names. In addition to the notes found in that section, it is possible to
+use <STRONG>r</STRONG> or <STRONG>R</STRONG> to specify a rest. The optional velocity must be an
+integer in the range 0..127. Default value is 127.
+
+The following example show how to generate an event list of a C-major scale
+played as quarter notes and followed by a C-major chord on channel 4:
+
+<P><TABLE><TBODY><TR><TD bgcolor="black">&nbsp;</TD><TD><PRE class="sample">set mf [midi::file -type 1 -time_division_type ticks_per_beat -ticks_per_beat 480]
+set el [$mf measure -channel 4 -events {{1/4 C5} {1/4 D5} {1/4 E5} {1/4 F5} {1/4 G5} {1/4 A5} {1/4 B5} {1/4 C6} {1/1 {C5 E5 G5 C6}}}]
+</PRE></TD></TR></TBODY></TABLE></P>
+
+Check the <A href="http://jos.decoster.googlepages.com/midi.html#examples">Examples</A> sections for more examples of using this method.
+
+<BR><BR>
+</DD><DT><STRONG></STRONG></DT><DD>
+
+</DD></DL>
+
+</DD></DL>
+
+<H2><A name="miditrack">midi::track</A></H2>
+<P>
+
+</P><DL>
+
+<DT><A name="16"><B class="cmd">midi::track</B> ?<I class="arg">options</I>? ...</A></DT><DD>
+
+
+This command will create a midi track object and return a unique midi track
+id. This id should be used to manipulate the midi track later on. Known options
+are:
+
+<BR><BR>
+<DL>
+
+<DT><STRONG>-events</STRONG> listOfEvents</DT><DD>
+
+Specifies a list of events with associated delta-time for the midi track. An
+event with its associated delta-time is represented as a list of the delta-time
+and a list of integers representing the event. By default, no events are added 
+to a track. A delta time specifies the time to wait before processing the 
+associated event. A delta time is expressed in clock ticks. When using 
+<STRONG>ticks_per_beat</STRONG> as time division type, the duration of a note can be 
+calculated based on the specified ticks per beat. When 480 clock clicks are 
+required for a quarter note, the length in clicks of other note lengths is as 
+follows: 
+
+<P><TABLE><TBODY><TR><TD bgcolor="black">&nbsp;</TD><TD><PRE class="sample">lengthInClicks = 480.0 * 4 * length
+</PRE></TD></TR></TBODY></TABLE></P>
+
+Using this function, the lengths of different notes can be calculated:
+
+<P><TABLE><TBODY><TR><TD bgcolor="black">&nbsp;</TD><TD><PRE class="sample">length length in clicks
+------ ----------------
+1                  1920
+1/2                 960
+1/4                 480
+1/8                 240
+1/16                120
+1/32                 60
+1/64                 30
+</PRE></TD></TR></TBODY></TABLE></P>
+
+The <B class="cmd">midi::file::clicks</B> method can be used to calculate lengths in clicks 
+for common note lengths.
+
+<BR><BR>
+</DD><DT><STRONG></STRONG></DT><DD>
+
+</DD></DL>
+
+</DD><DT><A name="17"><I class="arg">midiTrackId</I> <STRONG>destroy</STRONG></A></DT><DD>
+
+
+Reset and destroy a midi track object.
+
+<BR><BR>
+</DD><DT><A name="18"><I class="arg">midiTrackId</I> <STRONG>reset</STRONG></A></DT><DD>
+
+
+Reset a midi track object. Resetting a midi track object removes all events
+from the midi track.
+
+<BR><BR>
+</DD><DT><A name="19"><I class="arg">midiTrackId</I> <STRONG>validate</STRONG></A></DT><DD>
+
+
+Validates a midi track object, including the events.
+
+<BR><BR>
+</DD><DT><A name="20"><I class="arg">midiTrackId</I> <STRONG>validate_option</STRONG> <I class="arg">option</I> <I class="arg">value</I></A></DT><DD>
+
+
+Validates a midi track object option value. All options accepted by the 
+<B class="cmd">midi::track</B> command can be specified.
+
+<BR><BR>
+</DD><DT><A name="21"><I class="arg">midiTrackId</I> <STRONG>cget</STRONG> <I class="arg">option</I></A></DT><DD>
+
+
+Returns the current value of the configuration option given by <I class="arg">option</I>. 
+<I class="arg">Option</I> may have any of the values accepted by the 
+<B class="cmd">midi::track</B> command.
+
+<BR><BR>
+</DD><DT><A name="22"><I class="arg">midiTrackId</I> <STRONG>configure</STRONG></A></DT><DD>
+
+
+Returns a list describing all of the available options. The returned list
+contains a sublist for each known option with the following elements: the
+option, the default value and the current value. Information is returned for
+all options accepted by the <B class="cmd">midi::track</B> command.
+
+<BR><BR>
+</DD><DT><A name="23"><I class="arg">midiTrackId</I> <STRONG>configure</STRONG> <I class="arg">option</I></A></DT><DD>
+
+
+Returns list describing the named option. <I class="arg">Option</I> may have any of the
+values accepted by the <B class="cmd">midi::track</B> command. The returned list contains 3
+elements: the option, the default value and the current value.
+
+<BR><BR>
+</DD><DT><A name="24"><I class="arg">midiTrackId</I> <STRONG>configure</STRONG> <I class="arg">option value</I> ...</A></DT><DD>
+
+
+Modifies the given midi track option(s) to have the given value(s). The command
+returns an empty string. <I class="arg">Option</I> may have any of the values accepted by
+the <B class="cmd">midi::track</B> command.
+
+<BR><BR>
+</DD><DT><A name="25"><I class="arg">midiTrackId</I> <STRONG>dump</STRONG></A></DT><DD>
+
+
+Returns a textual representation of the midi track.
+
+</DD></DL>
+
+<H2><A name="midievent">midi::event</A></H2>
+<P>
+
+Events are represented as a list of integers. Each integer contains the value
+of a byte in the binary midi event as stored in a midi file. The commands
+listed below make it easier to create and manipulate midi events. These 
+commands offer a configure interface. Supported events with associated options 
+can be found in the <A href="http://jos.decoster.googlepages.com/midi.html#events">Events</A> section.
+
+</P><DL>
+
+<DT><A name="26"><B class="cmd">midi::event</B> <I class="arg">type</I> ?<I class="arg">options</I>? ...</A></DT><DD>
+ 
+
+Creates a new event of the specified type. Check the <A href="http://jos.decoster.googlepages.com/midi.html#events">Events</A> section
+for valid event types and associated options. The newly created event is
+returned as a list of integers. This list must be specified with the other
+event commands or when adding events to a track.
+ 
+<BR><BR>
+</DD><DT><A name="27"><B class="cmd">midi::event::reset</B> <I class="arg">intList</I></A></DT><DD>
+
+ 
+This command returns a list of integers for an event of the same type but with
+all option values set to their defautl values.
+
+<BR><BR>
+</DD><DT><A name="28"><B class="cmd">midi::event::validate</B> <I class="arg">intList</I></A></DT><DD>
+ 
+
+Checks if the specified list of integers is a valid event. 
+
+<BR><BR>
+</DD><DT><A name="29"><B class="cmd">midi::event::validate_option</B> <I class="arg">intList</I> ?<I class="arg">options</I>? ...</A></DT><DD>
+ 
+
+Validates a midi event object option value. All options accepted by the 
+midi event type can be specified.
+
+<BR><BR>
+</DD><DT><A name="30"><B class="cmd">midi::event::cget</B> <I class="arg">intList</I> <I class="arg">option</I></A></DT><DD>
+
+
+Returns the current value of the configuration option given by <I class="arg">option</I>. 
+<I class="arg">Option</I> may have any of the values accepted by the event type.
+ 
+<BR><BR>
+</DD><DT><A name="31"><B class="cmd">midi::event::configure</B> <I class="arg">intList</I></A></DT><DD>
+
+
+Returns a list describing all of the available options for the type of the
+specified event. The returned list contains a sublist for each known option
+with the following elements: the option, the default value and the current
+value.
+ 
+<BR><BR>
+</DD><DT><A name="32"><B class="cmd">midi::event::configure</B> <I class="arg">intList</I> <I class="arg">option</I></A></DT><DD>
+
+
+Returns list describing the named option. <I class="arg">Option</I> may have any of the
+values accepted by the event type. The returned list contains 3 elements: the
+option, the default value and the current value.
+ 
+<BR><BR>
+</DD><DT><A name="33"><B class="cmd">midi::event::configure</B> <I class="arg">intList</I> <I class="arg">option value</I> ...</A></DT><DD>
+
+ 
+Modifies the given midi event option(s) to have the given value(s). The command
+returns an empty string. <I class="arg">Option</I> may have any of the values accepted by
+the event type.
+
+<BR><BR>
+</DD><DT><A name="34"><B class="cmd">midi::event::type</B> <I class="arg">intList</I></A></DT><DD>
+
+ 
+Return the type of the specified event. Possible return values are: 
+<STRONG>note_off</STRONG> <STRONG>note_on</STRONG> <STRONG>note_aftertouch</STRONG> <STRONG>controller</STRONG>
+<STRONG>program_change</STRONG> <STRONG>channel_aftertouch</STRONG> <STRONG>pitch_bend</STRONG> 
+<STRONG>Meta</STRONG> <STRONG>SysEx</STRONG>
+
+<BR><BR>
+</DD><DT><A name="35"><B class="cmd">midi::event::type_meta_event</B> <I class="arg">intList</I></A></DT><DD>
+
+
+Returns meta event type. Possible return values are: 
+<STRONG>sequence_number</STRONG> <STRONG>copyright</STRONG> <STRONG>track_name</STRONG> 
+<STRONG>instrument_name</STRONG> <STRONG>lyric</STRONG> <STRONG>marker</STRONG> <STRONG>cue_point</STRONG>
+<STRONG>program_name</STRONG> <STRONG>device_name</STRONG> <STRONG>channel</STRONG> <STRONG>port</STRONG> 
+<STRONG>end_of_track</STRONG> <STRONG>tempo</STRONG> <STRONG>smpte_offset</STRONG> <STRONG>time_signature</STRONG> 
+<STRONG>key_signature</STRONG> <STRONG>sequencer_specific</STRONG> <STRONG>meta_unknown</STRONG>
+
+<BR><BR>
+</DD><DT><A name="36"><B class="cmd">midi::event::dump</B> <I class="arg">intList</I></A></DT><DD>
+
+
+Returns a textual representation of the midi event.
+
+</DD></DL>
+
+<H2><A name="examples">Examples</A></H2>
+<P>
+
+The following example creates a midi file with 4 tracks. All events are
+generated using the <B class="cmd">midi::event</B> command.
+
+</P><P><TABLE><TBODY><TR><TD bgcolor="black">&nbsp;</TD><TD><PRE class="sample">package require midi
+
+# Create midi file and initialise time division info
+set mf [midi::file -type 1 -time_division_type ticks_per_beat -ticks_per_beat 480]
+
+# Control track
+set t1el {}
+lappend t1el [list 0 [midi::event text -value "control track"]]
+lappend t1el [list 0 [midi::event tempo -tempo 0X7A120]] ;# 120 Beats per minute
+lappend t1el [list 0 [midi::event end_of_track]]
+set t1 [midi::track -events $t1el]
+
+# Piano track
+set t2el {}
+lappend t2el [list 0 [midi::event text -value "Piano track"]]
+lappend t2el [list 0 [midi::event program_change -channel 0 -program "Electric Piano 2"]]
+
+lappend t2el [list 0                [midi::event note_on  -channel 0 -note C4 -velocity 127]]
+lappend t2el [list [$mf clicks 1/1] [midi::event note_off -channel 0 -note C4 -velocity 127]]
+
+lappend t2el [list 0                [midi::event note_on  -channel 0 -note E4 -velocity 127]]
+lappend t2el [list [$mf clicks 1/1] [midi::event note_off -channel 0 -note E4 -velocity 127]]
+
+lappend t2el [list 0                [midi::event note_on  -channel 0 -note G4 -velocity 127]]
+lappend t2el [list [$mf clicks 1/1] [midi::event note_off -channel 0 -note G4 -velocity 127]]
+
+lappend t2el [list 0                [midi::event note_on  -channel 0 -note C5 -velocity 127]]
+lappend t2el [list [$mf clicks 1/1] [midi::event note_off -channel 0 -note C5 -velocity 127]]
+
+lappend t2el [list 0                [midi::event note_on  -channel 0 -note C4 -velocity 127]]
+lappend t2el [list 0                [midi::event note_on  -channel 0 -note E4 -velocity 127]]
+lappend t2el [list 0                [midi::event note_on  -channel 0 -note G4 -velocity 127]]
+lappend t2el [list 0                [midi::event note_on  -channel 0 -note C5 -velocity 127]]
+lappend t2el [list [$mf clicks 1/1] [midi::event note_off -channel 0 -note C4 -velocity 127]]
+lappend t2el [list 0                [midi::event note_off -channel 0 -note E4 -velocity 127]]
+lappend t2el [list 0                [midi::event note_off -channel 0 -note G4 -velocity 127]]
+lappend t2el [list 0                [midi::event note_off -channel 0 -note C5 -velocity 127]]
+
+lappend t2el [list 0                [midi::event end_of_track]]
+set t2 [midi::track -events $t2el]
+
+# Bass track
+set t3el {}
+lappend t3el [list 0 [midi::event text -value "Bass track"]]
+lappend t3el [list 0 [midi::event program_change -channel 1 -program "Electric Bass(pick)"]]
+
+lappend t3el [list 0                [midi::event note_on  -channel 1 -note C2 -velocity 127]]
+lappend t3el [list [$mf clicks 1/4] [midi::event note_off -channel 1 -note C2 -velocity 127]]
+lappend t3el [list 0                [midi::event note_on  -channel 1 -note D2 -velocity 127]]
+lappend t3el [list [$mf clicks 1/4] [midi::event note_off -channel 1 -note D2 -velocity 127]]
+lappend t3el [list 0                [midi::event note_on  -channel 1 -note E2 -velocity 127]]
+lappend t3el [list [$mf clicks 1/4] [midi::event note_off -channel 1 -note E2 -velocity 127]]
+lappend t3el [list 0                [midi::event note_on  -channel 1 -note F2 -velocity 127]]
+lappend t3el [list [$mf clicks 1/4] [midi::event note_off -channel 1 -note F2 -velocity 127]]
+
+lappend t3el [list 0                [midi::event note_on  -channel 1 -note E2 -velocity 127]]
+lappend t3el [list [$mf clicks 1/4] [midi::event note_off -channel 1 -note E2 -velocity 127]]
+lappend t3el [list 0                [midi::event note_on  -channel 1 -note F2 -velocity 127]]
+lappend t3el [list [$mf clicks 1/4] [midi::event note_off -channel 1 -note F2 -velocity 127]]
+lappend t3el [list 0                [midi::event note_on  -channel 1 -note G2 -velocity 127]]
+lappend t3el [list [$mf clicks 1/4] [midi::event note_off -channel 1 -note G2 -velocity 127]]
+lappend t3el [list 0                [midi::event note_on  -channel 1 -note A2 -velocity 127]]
+lappend t3el [list [$mf clicks 1/4] [midi::event note_off -channel 1 -note A2 -velocity 127]]
+
+lappend t3el [list 0                [midi::event note_on  -channel 1 -note G2 -velocity 127]]
+lappend t3el [list [$mf clicks 1/4] [midi::event note_off -channel 1 -note G2 -velocity 127]]
+lappend t3el [list 0                [midi::event note_on  -channel 1 -note A2 -velocity 127]]
+lappend t3el [list [$mf clicks 1/4] [midi::event note_off -channel 1 -note A2 -velocity 127]]
+lappend t3el [list 0                [midi::event note_on  -channel 1 -note B2 -velocity 127]]
+lappend t3el [list [$mf clicks 1/4] [midi::event note_off -channel 1 -note B2 -velocity 127]]
+lappend t3el [list 0                [midi::event note_on  -channel 1 -note C3 -velocity 127]]
+lappend t3el [list [$mf clicks 1/4] [midi::event note_off -channel 1 -note C3 -velocity 127]]
+
+lappend t3el [list 0                [midi::event note_on  -channel 1 -note C3 -velocity 127]]
+lappend t3el [list [$mf clicks 1/2] [midi::event note_off -channel 1 -note C3 -velocity 127]]
+lappend t3el [list 0                [midi::event note_on  -channel 1 -note G2 -velocity 127]]
+lappend t3el [list [$mf clicks 1/4] [midi::event note_off -channel 1 -note G2 -velocity 127]]
+lappend t3el [list 0                [midi::event note_on  -channel 1 -note E2 -velocity 127]]
+lappend t3el [list [$mf clicks 1/4] [midi::event note_off -channel 1 -note E2 -velocity 127]]
+
+lappend t3el [list 0        [midi::event note_on  -channel 1 -note C2 -velocity 127]]
+lappend t3el [list [$mf clicks 1/1]   [midi::event note_off -channel 1 -note C2 -velocity 127]]
+
+lappend t3el [list 0 [midi::event end_of_track]]
+set t3 [midi::track -events $t3el]
+
+# Drum track
+set t4el {}
+lappend t4el [list 0 [midi::event text -value "Drum track"]]
+
+lappend t4el [list 0                [midi::event note_on  -channel 9 -note "closed hi-hat"      -velocity 127]]
+lappend t4el [list 0                [midi::event note_on  -channel 9 -note "acoustic bass drum" -velocity 127]]
+lappend t4el [list [$mf clicks 1/4] [midi::event note_off -channel 9 -note "closed hi-hat"      -velocity 127]]
+lappend t4el [list 0                [midi::event note_on  -channel 9 -note "closed hi-hat"      -velocity 127]]
+lappend t4el [list [$mf clicks 1/4] [midi::event note_off -channel 9 -note "closed hi-hat"      -velocity 127]]
+lappend t4el [list 0                [midi::event note_on  -channel 9 -note "closed hi-hat"      -velocity 127]]
+lappend t4el [list 0                [midi::event note_on  -channel 9 -note "acoustic snare"     -velocity 127]]
+lappend t4el [list [$mf clicks 1/4] [midi::event note_off -channel 9 -note "closed hi-hat"      -velocity 127]]
+lappend t4el [list 0                [midi::event note_on  -channel 9 -note "closed hi-hat"      -velocity 127]]
+
+for { set i 0 } { $i &lt; 4 } { incr i } {
+    lappend t4el [list [$mf clicks 1/4] [midi::event note_off -channel 9 -note "closed hi-hat"      -velocity 127]]
+    lappend t4el [list 0                [midi::event note_on  -channel 9 -note "closed hi-hat"      -velocity 127]]
+    lappend t4el [list 0                [midi::event note_off -channel 9 -note "acoustic bass drum" -velocity 127]]
+    lappend t4el [list 0                [midi::event note_on  -channel 9 -note "acoustic bass drum" -velocity 127]]
+    lappend t4el [list [$mf clicks 1/4] [midi::event note_off -channel 9 -note "closed hi-hat"      -velocity 127]]
+    lappend t4el [list 0                [midi::event note_on  -channel 9 -note "closed hi-hat"      -velocity 127]]
+    lappend t4el [list [$mf clicks 1/4] [midi::event note_off -channel 9 -note "closed hi-hat"      -velocity 127]]
+    lappend t4el [list 0                [midi::event note_on  -channel 9 -note "closed hi-hat"      -velocity 127]]
+    lappend t4el [list 0                [midi::event note_off -channel 9 -note "acoustic snare"     -velocity 127]]
+    lappend t4el [list 0                [midi::event note_on  -channel 9 -note "acoustic snare"     -velocity 127]]
+    lappend t4el [list [$mf clicks 1/4] [midi::event note_off -channel 9 -note "closed hi-hat"      -velocity 127]]
+    lappend t4el [list 0                [midi::event note_on  -channel 9 -note "closed hi-hat"      -velocity 127]]
+}
+
+lappend t4el [list 0 [midi::event end_of_track]]
+set t4 [midi::track -events $t4el]
+
+# Add tracks and write file
+$mf configure -tracks [list $t1 $t2 $t3 $t4]
+$mf write test.mid
+$mf destroy
+
+exit
+</PRE></TD></TR></TBODY></TABLE></P>
+
+The following examples uses the <B class="cmd">midi::file::measure</B> method to generate the
+same note-on and note-off events as in the example above. This example requires
+Tcl 8.5 because it uses the {*} operator.
+
+<P><TABLE><TBODY><TR><TD bgcolor="black">&nbsp;</TD><TD><PRE class="sample">lappend auto_path ..
+package require Tcl 8.5
+package require midi
+
+# Create midi file and initialise time division info
+set mf [midi::file -type 1 -time_division_type ticks_per_beat -ticks_per_beat 480]
+
+# Control track
+set t1el {}
+lappend t1el [list 0 [midi::event text -value "control track"]]
+lappend t1el [list 0 [midi::event tempo -tempo 0X7A120]] ;# 120 Beats per minute
+lappend t1el [list 0 [midi::event end_of_track]]
+
+set t1 [midi::track -events $t1el]
+
+# Piano track
+set at2el {}
+lappend at2el [list 0 [midi::event text -value "Piano track"]]
+lappend at2el [list 0 [midi::event program_change -channel 0 -program "Electric Piano 2"]]
+lappend at2el {*}[$mf measure -channel 0 -events {{1/1 C4} {1/1 E4} {1/1 G4} {1/1 C5} {1/1 {C4 E4 G4 C5}}}]
+lappend at2el [list 0 [midi::event end_of_track]]
+
+set t2 [midi::track -events $at2el]
+
+# Bass track
+set at3el {}
+lappend at3el [list 0 [midi::event text -value "Bass track"]]
+lappend at3el [list 0 [midi::event program_change -channel 1 -program "Electric Bass(pick)"]]
+lappend at3el {*}[$mf measure -channel 1 -events {{1/4 C2} {1/4 D2} {1/4 E2} {1/4 F2}}]
+lappend at3el {*}[$mf measure -channel 1 -events {{1/4 E2 60} {1/4 F2} {1/4 G2} {1/4 A2}}]
+lappend at3el {*}[$mf measure -channel 1 -events {{1/4 G2} {1/4 A2} {1/4 B2} {1/4  C3}}]
+lappend at3el {*}[$mf measure -channel 1 -events {{1/2 C3} {1/4 G2} {1/4 E2}}]
+lappend at3el {*}[$mf measure -channel 1 -events {{1/1 C2}}]
+lappend at3el [list 0 [midi::event end_of_track]]
+
+set t3 [midi::track -events $at3el]
+
+# Drum track
+set at4el {}
+lappend at4el [list 0 [midi::event text -value "Drum track"]]
+for { set i 0 } { $i &lt; 5 } { incr i } {
+    lappend at4el {*}[$mf measure -channel 9 -events {
+        {1/4 {"closed hi-hat" "acoustic bass drum"}} \
+	{1/4 {"closed hi-hat"}} \
+        {1/4 {"closed hi-hat" "acoustic snare"}} \
+        {1/4 {"closed hi-hat"}} \
+	}]
+}
+lappend at4el [list 0 [midi::event end_of_track]]
+
+set t4 [midi::track -events $at4el]
+
+# Add tracks and write file
+$mf configure -tracks [list $t1 $t2 $t3 $t4]
+$mf write test2.mid
+$mf destroy
+
+exit
+</PRE></TD></TR></TBODY></TABLE></P>
+
+This example shows how the rests and the <B class="cmd">midi::merge</B> command can be used
+to generate an event-list for the first track of the example above:
+
+<P><TABLE><TBODY><TR><TD bgcolor="black">&nbsp;</TD><TD><PRE class="sample">set t1 [midi::track -events $t1el]
+
+# Piano track
+set at2el {}
+lappend at2el [list 0 [midi::event text -value "Piano track"]]
+lappend at2el [list 0 [midi::event program_change -channel 0 -program "Electric Piano 2"]]
+
+
+set te1 [$mf measure -channel 0 -events {{1/1 C4} {1/1 r}  {1/1 G4} {1/1 R}  {1/1 {r  E4 r  C5}}}]
+set te2 [$mf measure -channel 0 -events {{1/1 R}  {1/1 E4} {1/1 r}  {1/1 C5} {1/1 {C4 r  G4 r }}}]
+lappend at2el {*}[midi::merge $te1 $te2]
+
+lappend at2el [list 0 [midi::event end_of_track]]
+
+set t2 [midi::track -events $at2el]
+</PRE></TD></TR></TBODY></TABLE></P>
+
+This example reads the midi file specified on the command line and dumps the
+contents to standard output:
+
+<P><TABLE><TBODY><TR><TD bgcolor="black">&nbsp;</TD><TD><PRE class="sample">package require midi
+
+set mf [midi::file]
+$mf read [lindex $argv 0]
+puts [$mf dump]
+$mf destroy
+
+exit
+</PRE></TD></TR></TBODY></TABLE></P>
+
+The result of the dump command looks like this:
+
+<P><TABLE><TBODY><TR><TD bgcolor="black">&nbsp;</TD><TD><PRE class="sample">MThd
+  header size: 6
+  format type: 1
+  number of tracks: 4
+  time division: 480 ticks per beat
+
+MTrk
+
+  Delta time    Absolute time Event
+  ------------- ------------- ----------------------------------------
+              0             0 text control track
+              0             0 tempo 500000
+              0             0 end_of_track
+
+MTrk
+
+  Delta time    Absolute time Event
+  ------------- ------------- ----------------------------------------
+              0             0 text Piano track
+              0             0 program_change channel 0x00, program 0x04
+              0             0 note_on channel 0x00, note 0x3C, velocity 0x7F
+           1920          1920 note_off channel 0x00, note 0x3C, velocity 0x7F
+              0          1920 note_on channel 0x00, note 0x40, velocity 0x7F
+           1920          3840 note_off channel 0x00, note 0x40, velocity 0x7F
+              0          3840 note_on channel 0x00, note 0x43, velocity 0x7F
+           1920          5760 note_off channel 0x00, note 0x43, velocity 0x7F
+              0          5760 note_on channel 0x00, note 0x48, velocity 0x7F
+           1920          7680 note_off channel 0x00, note 0x48, velocity 0x7F
+              0          7680 note_on channel 0x00, note 0x3C, velocity 0x7F
+              0          7680 note_on channel 0x00, note 0x40, velocity 0x7F
+              0          7680 note_on channel 0x00, note 0x43, velocity 0x7F
+              0          7680 note_on channel 0x00, note 0x48, velocity 0x7F
+           1920          9600 note_off channel 0x00, note 0x3C, velocity 0x7F
+              0          9600 note_off channel 0x00, note 0x40, velocity 0x7F
+              0          9600 note_off channel 0x00, note 0x43, velocity 0x7F
+              0          9600 note_off channel 0x00, note 0x48, velocity 0x7F
+              0          9600 end_of_track
+
+MTrk
+
+  Delta time    Absolute time Event
+  ------------- ------------- ----------------------------------------
+              0             0 text Bass track
+              0             0 program_change channel 0x01, program 0x22
+              0             0 note_on channel 0x01, note 0x24, velocity 0x7F
+            480           480 note_off channel 0x01, note 0x24, velocity 0x7F
+              0           480 note_on channel 0x01, note 0x26, velocity 0x7F
+            480           960 note_off channel 0x01, note 0x26, velocity 0x7F
+              0           960 note_on channel 0x01, note 0x28, velocity 0x7F
+            480          1440 note_off channel 0x01, note 0x28, velocity 0x7F
+              0          1440 note_on channel 0x01, note 0x29, velocity 0x7F
+            480          1920 note_off channel 0x01, note 0x29, velocity 0x7F
+              0          1920 note_on channel 0x01, note 0x28, velocity 0x7F
+            480          2400 note_off channel 0x01, note 0x28, velocity 0x7F
+              0          2400 note_on channel 0x01, note 0x29, velocity 0x7F
+            480          2880 note_off channel 0x01, note 0x29, velocity 0x7F
+              0          2880 note_on channel 0x01, note 0x2B, velocity 0x7F
+            480          3360 note_off channel 0x01, note 0x2B, velocity 0x7F
+              0          3360 note_on channel 0x01, note 0x2D, velocity 0x7F
+            480          3840 note_off channel 0x01, note 0x2D, velocity 0x7F
+              0          3840 note_on channel 0x01, note 0x2B, velocity 0x7F
+            480          4320 note_off channel 0x01, note 0x2B, velocity 0x7F
+              0          4320 note_on channel 0x01, note 0x2D, velocity 0x7F
+            480          4800 note_off channel 0x01, note 0x2D, velocity 0x7F
+              0          4800 note_on channel 0x01, note 0x2F, velocity 0x7F
+            480          5280 note_off channel 0x01, note 0x2F, velocity 0x7F
+              0          5280 note_on channel 0x01, note 0x30, velocity 0x7F
+            480          5760 note_off channel 0x01, note 0x30, velocity 0x7F
+              0          5760 note_on channel 0x01, note 0x30, velocity 0x7F
+            960          6720 note_off channel 0x01, note 0x30, velocity 0x7F
+              0          6720 note_on channel 0x01, note 0x2B, velocity 0x7F
+            480          7200 note_off channel 0x01, note 0x2B, velocity 0x7F
+              0          7200 note_on channel 0x01, note 0x28, velocity 0x7F
+            480          7680 note_off channel 0x01, note 0x28, velocity 0x7F
+              0          7680 note_on channel 0x01, note 0x24, velocity 0x7F
+           1920          9600 note_off channel 0x01, note 0x24, velocity 0x7F
+              0          9600 end_of_track
+
+MTrk
+
+  Delta time    Absolute time Event
+  ------------- ------------- ----------------------------------------
+              0             0 text Drum track
+              0             0 note_on channel 0x09, note 0x2A, velocity 0x7F
+              0             0 note_on channel 0x09, note 0x24, velocity 0x7F
+            480           480 note_on channel 0x09, note 0x2A, velocity 0x7F
+            480           960 note_on channel 0x09, note 0x2A, velocity 0x7F
+              0           960 note_on channel 0x09, note 0x26, velocity 0x7F
+            480          1440 note_on channel 0x09, note 0x2A, velocity 0x7F
+            480          1920 note_on channel 0x09, note 0x2A, velocity 0x7F
+              0          1920 note_on channel 0x09, note 0x24, velocity 0x7F
+            480          2400 note_on channel 0x09, note 0x2A, velocity 0x7F
+            480          2880 note_on channel 0x09, note 0x2A, velocity 0x7F
+              0          2880 note_on channel 0x09, note 0x26, velocity 0x7F
+            480          3360 note_on channel 0x09, note 0x2A, velocity 0x7F
+            480          3840 note_on channel 0x09, note 0x2A, velocity 0x7F
+              0          3840 note_on channel 0x09, note 0x24, velocity 0x7F
+            480          4320 note_on channel 0x09, note 0x2A, velocity 0x7F
+            480          4800 note_on channel 0x09, note 0x2A, velocity 0x7F
+              0          4800 note_on channel 0x09, note 0x26, velocity 0x7F
+            480          5280 note_on channel 0x09, note 0x2A, velocity 0x7F
+            480          5760 note_on channel 0x09, note 0x2A, velocity 0x7F
+              0          5760 note_on channel 0x09, note 0x24, velocity 0x7F
+            480          6240 note_on channel 0x09, note 0x2A, velocity 0x7F
+            480          6720 note_on channel 0x09, note 0x2A, velocity 0x7F
+              0          6720 note_on channel 0x09, note 0x26, velocity 0x7F
+            480          7200 note_on channel 0x09, note 0x2A, velocity 0x7F
+            480          7680 note_on channel 0x09, note 0x2A, velocity 0x7F
+              0          7680 note_on channel 0x09, note 0x24, velocity 0x7F
+            480          8160 note_on channel 0x09, note 0x2A, velocity 0x7F
+            480          8640 note_on channel 0x09, note 0x2A, velocity 0x7F
+              0          8640 note_on channel 0x09, note 0x26, velocity 0x7F
+            480          9120 note_on channel 0x09, note 0x2A, velocity 0x7F
+              0          9120 end_of_track
+</PRE></TD></TR></TBODY></TABLE></P>
+
+<H2><A name="events">Events</A></H2>
+<P>
+
+</P><DL>
+
+<DT>sequence_number</DT><DD> Event containing the sequence number of the track in
+ which this event is placed.
+
+<BR><BR>
+<DL>
+<DT><STRONG>-value</STRONG> integer</DT><DD> The sequence number of the track. The default value
+is <STRONG>0</STRONG>. 
+<BR><BR>
+</DD><DT><STRONG></STRONG></DT><DD>
+</DD></DL>
+
+</DD><DT>text</DT><DD> Text describing the track in which this event is placed.
+
+<BR><BR>
+<DL>
+<DT><STRONG>-value</STRONG> string</DT><DD> File or track description. The default value is an 
+empty string.
+<BR><BR>
+</DD><DT><STRONG></STRONG></DT><DD>
+</DD></DL>
+
+</DD><DT>copyright</DT><DD> Midi file copyright notice.
+
+<BR><BR>
+<DL>
+<DT><STRONG>-value</STRONG> string</DT><DD> Copyright text. The default value is an empty 
+string.
+<BR><BR>
+</DD><DT><STRONG></STRONG></DT><DD>
+</DD></DL>
+
+</DD><DT>track_name</DT><DD> Name of track.
+
+<BR><BR>
+<DL>
+<DT><STRONG>-value</STRONG> string</DT><DD> Track name. The default value is an empty string.
+<BR><BR>
+</DD><DT><STRONG></STRONG></DT><DD>
+</DD></DL>
+
+</DD><DT>instrument_name</DT><DD> Name of instrument used in track.
+
+<BR><BR>
+<DL>
+<DT><STRONG>-value</STRONG> string</DT><DD> Instrument name. The default value is an empty string.
+<BR><BR>
+</DD><DT><STRONG></STRONG></DT><DD>
+</DD></DL>
+
+</DD><DT>lyric</DT><DD> Lyric to be sung at the point this event is placed. This can 
+be a word or syllable.
+
+<BR><BR>
+<DL>
+<DT><STRONG>-value</STRONG> string</DT><DD> Lyric. The default value is an empty string.
+<BR><BR>
+</DD><DT><STRONG></STRONG></DT><DD>
+</DD></DL>
+
+</DD><DT>marker</DT><DD> Marker for specific point in track like rehearsal letter, 
+section name, loop start or loop end.
+
+<BR><BR>
+<DL>
+<DT><STRONG>-value</STRONG> string</DT><DD> Marker text. The default value is an empty string.
+<BR><BR>
+</DD><DT><STRONG></STRONG></DT><DD>
+</DD></DL>
+
+</DD><DT>cue_point</DT><DD> Description of something which happens at the point this 
+event is placed.
+
+<BR><BR>
+<DL>
+<DT><STRONG>-value</STRONG> string</DT><DD> Descriptive text. The default value is an empty string.
+<BR><BR>
+</DD><DT><STRONG></STRONG></DT><DD>
+</DD></DL>
+
+</DD><DT>program_name</DT><DD> Name of the program used in the events following.
+
+<BR><BR>
+<DL>
+<DT><STRONG>-value</STRONG> string</DT><DD> Program name. The default value is an empty string.
+<BR><BR>
+</DD><DT><STRONG></STRONG></DT><DD>
+</DD></DL>
+
+</DD><DT>device_name</DT><DD> Name of the midi device (port) where the track is 
+routed.
+
+<BR><BR>
+<DL>
+<DT><STRONG>-value</STRONG> string</DT><DD> Device name. The default value is an empty string.
+<BR><BR>
+</DD><DT><STRONG></STRONG></DT><DD>
+</DD></DL>
+
+</DD><DT>channel</DT><DD> Specifies the channel to which following meta and system 
+exclusive must be sent. (DEPRECATED)
+
+<BR><BR>
+<DL>
+<DT><STRONG>-channel</STRONG> integer</DT><DD> Channel number. The default value is 0. Check the 
+<A href="http://jos.decoster.googlepages.com/midi.html#channels">Channels</A> section for valid channel numbers.
+<BR><BR>
+</DD><DT><STRONG></STRONG></DT><DD>
+</DD></DL>
+
+</DD><DT>port</DT><DD> Midi port to which following midi events must be sent. 
+(DEPRECATED)
+
+<BR><BR>
+<DL>
+<DT><STRONG>-port</STRONG></DT><DD> Port number. The default value is 0.
+<BR><BR>
+</DD><DT><STRONG></STRONG></DT><DD>
+</DD></DL>
+
+</DD><DT>end_of_track</DT><DD> Marks the end of a track. Must be placed at the end of 
+every track. 
+
+<BR><BR>
+</DD><DT>tempo</DT><DD> Used to indicate tempo changes. 
+
+<BR><BR>
+<DL>
+<DT><STRONG>-tempo</STRONG> integer</DT><DD> Tempo expressed in micro seconds per quarter note. The
+default value is 0x07A120 which corresponds to 120 BPM.
+<BR><BR>
+</DD><DT><STRONG></STRONG></DT><DD>
+</DD></DL>
+
+</DD><DT>smpte_offset</DT><DD> Specifies the start time of the track. 
+
+<BR><BR>
+<DL>
+<DT><STRONG>-hours</STRONG> integer</DT><DD> Hours part of start time. Default value is 0.
+<BR><BR>
+</DD><DT><STRONG>-minutes</STRONG> integer</DT><DD> Minutes part of start time. Default value is 0.
+<BR><BR>
+</DD><DT><STRONG>-seconds</STRONG> integer</DT><DD> Seconds part of start time. Default value is 0.
+<BR><BR>
+</DD><DT><STRONG>-frames</STRONG> integer</DT><DD> Frame count part of start time. Default value is 0.
+<BR><BR>
+</DD><DT><STRONG>-framefractions</STRONG> integer</DT><DD> Frame fraction part of start time. Default 
+value is 0.
+<BR><BR>
+</DD><DT><STRONG></STRONG></DT><DD>
+</DD></DL>
+
+</DD><DT>time_signature</DT><DD> Used to specify the time signature.
+
+<BR><BR>
+<DL>
+<DT><STRONG>-numerator</STRONG> integer</DT><DD> Numerator part of time signature. Default value is
+0.
+<BR><BR>
+</DD><DT><STRONG>-denominator</STRONG> integer</DT><DD> Denominator part of the time signature. This 
+values must be an integer power of 2 (2, 4, 8). Default value is 1.
+<BR><BR>
+</DD><DT><STRONG>-clocks_ticks_between_metronome_clicks</STRONG> integer</DT><DD> The number of midi 
+clock cliks in one metronome click. Default value is 0. 
+<BR><BR>
+</DD><DT><STRONG>-notated_32nd_notes_in_quarter_note</STRONG> integer</DT><DD> The number of notated 
+32nd notes in a midi quarter note. Default value is 0.
+<BR><BR>
+</DD><DT><STRONG></STRONG></DT><DD>
+</DD></DL>
+
+</DD><DT>key_signature</DT><DD> Sets the key signature.
+
+<BR><BR>
+<DL>
+<DT><STRONG>-number_of_modifications</STRONG> integer</DT><DD> The number of modifications. 
+Positive  numbers (1..7) for sharps, negative numbers (-1..-7) for flats. 
+Default value is 0.
+<BR><BR>
+</DD><DT><STRONG>-scale</STRONG> integer</DT><DD> Set to 0 for major scale or to 1 for minor scale. 
+Default values is 0.
+<BR><BR>
+</DD><DT><STRONG></STRONG></DT><DD>
+</DD></DL>
+
+</DD><DT>sequencer_specific</DT><DD> Used to send data to a sequencer. These events 
+are not interpreted by this packages. 
+
+<BR><BR>
+<DL>
+<DT><STRONG>-data</STRONG> listOfIntegers</DT><DD> The data to be sent as a list of integers 
+without the size of the data. Default value is an empty list. 
+<BR><BR>
+</DD><DT><STRONG></STRONG></DT><DD>
+</DD></DL>
+
+</DD><DT>meta_unknown</DT><DD> Meta event. These events are not interpreted by this 
+packages. 
+
+<BR><BR>
+<DL>
+<DT><STRONG>-meta_unknown_event_type</STRONG> integer</DT><DD> Meta event type. Default values is 
+0.
+<BR><BR>
+</DD><DT><STRONG>-data</STRONG> listOfIntegers</DT><DD> Data associated with the meta event specified as
+a list of integers without the size of the data. Default value is an empty 
+list.
+<BR><BR>
+</DD><DT><STRONG></STRONG></DT><DD>
+</DD></DL>
+
+</DD><DT>SysEx</DT><DD> System exclusive event. These events are not interpreted by 
+this packages. 
+
+<BR><BR>
+<DL>
+<DT><STRONG>-sysex_event_type</STRONG></DT><DD> System exclusive event type. Default values is 0.
+<BR><BR>
+</DD><DT><STRONG>-data</STRONG></DT><DD> Data associated with the system exclusive event specified as
+a list of integers without the size of the data. Default value is an empty 
+list.
+<BR><BR>
+</DD><DT><STRONG></STRONG></DT><DD>
+</DD></DL>
+
+</DD><DT>note_on</DT><DD> Play a note.
+
+<BR><BR>
+<DL>
+<DT><STRONG>-channel</STRONG> integer</DT><DD> Channel on which to play the note. Check the 
+<A href="http://jos.decoster.googlepages.com/midi.html#channels">Channels</A> section for valid channel numbers. Default value is 0.
+<BR><BR>
+</DD><DT><STRONG>-note</STRONG> note</DT><DD> Note to play. Check the <A href="http://jos.decoster.googlepages.com/midi.html#notes">Notes</A> section for 
+valid note numbers and valid note names. Default value is 0. 
+<BR><BR>
+</DD><DT><STRONG>-velocity</STRONG> integer</DT><DD> Velocity (volume) with which to hit the note. Must 
+be an integer in the range 0..127. Default value is 0.
+<BR><BR>
+</DD><DT><STRONG></STRONG></DT><DD>
+</DD></DL>
+
+</DD><DT>note_off</DT><DD> Stop a note.
+
+<BR><BR>
+<DL>
+<DT><STRONG>-channel</STRONG> integer</DT><DD> Channel on which to stop the note. Check the 
+<A href="http://jos.decoster.googlepages.com/midi.html#channels">Channels</A> section for valid channel numbers. Default value is 0.
+<BR><BR>
+</DD><DT><STRONG>-note</STRONG> note</DT><DD> Note to stop. Check the <A href="http://jos.decoster.googlepages.com/midi.html#notes">Notes</A> section for 
+valid note numbers and valid note names. Default value is 0. 
+<BR><BR>
+</DD><DT><STRONG>-velocity</STRONG> integer</DT><DD> Velocity (volume) with which to stop the note. Must
+be an integer in the range 0..127. Default value is 0.
+<BR><BR>
+</DD><DT><STRONG></STRONG></DT><DD>
+</DD></DL>
+
+</DD><DT>note_aftertouch</DT><DD> Change the pressure with which the note is held 
+down. This can be used to control effects (e.g. a vibrato).
+
+<BR><BR>
+<DL>
+<DT><STRONG>-channel</STRONG> integer</DT><DD> Channel on which to apply the aftertouch. Check the 
+<A href="http://jos.decoster.googlepages.com/midi.html#channels">Channels</A> section for valid channel numbers. Default value is 0.
+<BR><BR>
+</DD><DT><STRONG>-note</STRONG> note</DT><DD> Note to apply aftertouch to. Check the <A href="http://jos.decoster.googlepages.com/midi.html#notes">Notes</A> 
+section for  valid note numbers and valid note names. Default value is 0. 
+<BR><BR>
+</DD><DT><STRONG>-amount</STRONG> integer</DT><DD> Amount of aftertouch to apply to the note. Must
+be an integer in the range 0..127. Default value is 0.
+<BR><BR>
+</DD><DT><STRONG></STRONG></DT><DD>
+</DD></DL>
+
+</DD><DT>controller</DT><DD> Used to set the value of a controller (e.g. modulation 
+wheel).
+
+<BR><BR>
+<DL>
+<DT><STRONG>-channel</STRONG> integer</DT><DD> Channel on which controller will have effect. Check 
+the <A href="http://jos.decoster.googlepages.com/midi.html#channels">Channels</A> section for valid channel numbers. Default value is 0. 
+<BR><BR>
+</DD><DT><STRONG>-controller</STRONG> controller</DT><DD> Controller name or number. Check the 
+<A href="http://jos.decoster.googlepages.com/midi.html#controllers">Controllers</A> section for valid controller names and numbers. Default 
+value is 0.
+<BR><BR>
+</DD><DT><STRONG>-value</STRONG> integer</DT><DD> Value to be set for the specified controller. Must
+be an integer in the range 0..127. Default value is 0.
+<BR><BR>
+</DD><DT><STRONG></STRONG></DT><DD>
+</DD></DL>
+
+</DD><DT>program_change</DT><DD> change the program (patch, instrument) for a channel.
+
+<BR><BR>
+<DL>
+<DT><STRONG>-channel</STRONG> integer</DT><DD> Channel on which program change will have effect. 
+Check  the <A href="http://jos.decoster.googlepages.com/midi.html#channels">Channels</A> section for valid channel numbers. Default value 
+is 0. 
+<BR><BR>
+</DD><DT><STRONG>-program</STRONG> program</DT><DD> Program name or number. Check the 
+<A href="http://jos.decoster.googlepages.com/midi.html#programs">Programs</A> section for valid program names and numbers. Default value 
+is 0.
+<BR><BR>
+</DD><DT><STRONG></STRONG></DT><DD>
+</DD></DL>
+
+</DD><DT>channel_aftertouch</DT><DD> Change the pressure with which all notes in the 
+specified channel are held down. This can be used to control effects (e.g. a 
+vibrato).
+
+<BR><BR>
+<DL>
+<DT><STRONG>-channel</STRONG> integer</DT><DD> Channel on which to apply the aftertouch. Check the 
+<A href="http://jos.decoster.googlepages.com/midi.html#channels">Channels</A> section for valid channel numbers. Default value is 0.
+<BR><BR>
+</DD><DT><STRONG>-amount</STRONG> integer</DT><DD> Amount of aftertouch to apply to the channel. Must
+be an integer in the range 0..127. Default value is 0.
+<BR><BR>
+</DD><DT><STRONG></STRONG></DT><DD>
+</DD></DL>
+
+
+</DD><DT>pitch_bend</DT><DD> Used to change the pitch of all notes in a channel.
+
+<BR><BR>
+<DL>
+<DT><STRONG>-channel</STRONG> integer</DT><DD> Channel on which to apply the aftertouch. Check the 
+<A href="http://jos.decoster.googlepages.com/midi.html#channels">Channels</A> section for valid channel numbers. Default value is 0.
+<BR><BR>
+</DD><DT><STRONG>-amount</STRONG> integer</DT><DD> Amount of bend. Must be an integer in the range 
+-8192..8191. Values less than zero lower the pitch, values larger than zero 
+increase the pitch. 
+<BR><BR>
+</DD><DT><STRONG></STRONG></DT><DD>
+</DD></DL>
+ 
+</DD></DL>
+
+<H2><A name="channels">Channels</A></H2>
+<P>
+
+A midi file can store data for 16 channels. Valid channel numbers are in the 
+range 0..15. Real channel numbers must be specified. Often midi channels are 
+numbered starting from 1. When using this package, the first channel is channel
+zero. 
+
+</P><H2><A name="notes">Notes</A></H2>
+<P>
+
+A midi file knows 128 notes. They are represented by an integer in the range 
+0..127. The note with number 69 is an A with pitch of 440Hz. 
+
+Notes can be specified using their number or using an alphanumeric notation. 
+This notation has the following structure:
+
+</P><P><TABLE><TBODY><TR><TD bgcolor="black">&nbsp;</TD><TD><PRE class="sample">&lt;note&gt;&lt;modifiers&gt;&lt;octave&gt;
+</PRE></TD></TR></TBODY></TABLE></P>
+
+<UL>
+
+<LI>Valid notes are <STRONG>A</STRONG>, <STRONG>B</STRONG>, <STRONG>C</STRONG>, <STRONG>D</STRONG>, <STRONG>E</STRONG>,
+<STRONG>F</STRONG> and <STRONG>G</STRONG>. The notes can be specified in upper or lower case. 
+
+<BR><BR>
+</LI><LI>Valid modifiers are <STRONG>#</STRONG> and <STRONG>b</STRONG>. The modifiers can be
+specified in upper or lower case.
+
+<BR><BR>
+</LI><LI>Valid octaves are <STRONG>-1</STRONG> to 9.
+
+</LI></UL>
+
+Some examples:
+
+<P><TABLE><TBODY><TR><TD bgcolor="black">&nbsp;</TD><TD><PRE class="sample">A4
+Bb7
+F#3
+C##4
+abb3
+e#b#b#b6
+</PRE></TD></TR></TBODY></TABLE></P>
+
+When representing notes with their numbers, valid notes are:
+
+<P><TABLE><TBODY><TR><TD bgcolor="black">&nbsp;</TD><TD><PRE class="sample">Number Note  Octave
+------ ----- ------
+     0     C     -1
+     1 C#/Db     -1
+     2     D     -1
+     3 D#/Eb     -1
+     4     E     -1
+     5     F     -1
+     6 F#/Gb     -1
+     7     G     -1
+     8  G#Ab     -1
+     9     A     -1
+    10 A#/Bb     -1
+    11     B     -1
+    12     C      0
+    13 C#/Db      0
+    14     D      0
+    15 D#/Eb      0
+    16     E      0
+    17     F      0
+    18 F#/Gb      0
+    19     G      0
+    20  G#Ab      0
+    21     A      0
+    22 A#/Bb      0
+    23     B      0
+    24     C      1
+    25 C#/Db      1
+    26     D      1
+    27 D#/Eb      1
+    28     E      1
+    29     F      1
+    30 F#/Gb      1
+    31     G      1
+    32  G#Ab      1
+    33     A      1
+    34 A#/Bb      1
+    35     B      1
+    36     C      2
+    37 C#/Db      2
+    38     D      2
+    39 D#/Eb      2
+    40     E      2
+    41     F      2
+    42 F#/Gb      2
+    43     G      2
+    44  G#Ab      2
+    45     A      2
+    46 A#/Bb      2
+    47     B      2
+    48     C      3
+    49 C#/Db      3
+    50     D      3
+    51 D#/Eb      3
+    52     E      3
+    53     F      3
+    54 F#/Gb      3
+    55     G      3
+    56  G#Ab      3
+    57     A      3
+    58 A#/Bb      3
+    59     B      3
+    60     C      4
+    61 C#/Db      4
+    62     D      4
+    63 D#/Eb      4
+    64     E      4
+    65     F      4
+    66 F#/Gb      4
+    67     G      4
+    68  G#Ab      4
+    69     A      4
+    70 A#/Bb      4
+    71     B      4
+    72     C      5
+    73 C#/Db      5
+    74     D      5
+    75 D#/Eb      5
+    76     E      5
+    77     F      5
+    78 F#/Gb      5
+    79     G      5
+    80  G#Ab      5
+    81     A      5
+    82 A#/Bb      5
+    83     B      5
+    84     C      6
+    85 C#/Db      6
+    86     D      6
+    87 D#/Eb      6
+    88     E      6
+    89     F      6
+    90 F#/Gb      6
+    91     G      6
+    92  G#Ab      6
+    93     A      6
+    94 A#/Bb      6
+    95     B      6
+    96     C      7
+    97 C#/Db      7
+    98     D      7
+    99 D#/Eb      7
+   100     E      7
+   101     F      7
+   102 F#/Gb      7
+   103     G      7
+   104  G#Ab      7
+   105     A      7
+   106 A#/Bb      7
+   107     B      7
+   108     C      8
+   109 C#/Db      8
+   110     D      8
+   111 D#/Eb      8
+   112     E      8
+   113     F      8
+   114 F#/Gb      8
+   115     G      8
+   116  G#Ab      8
+   117     A      8
+   118 A#/Bb      8
+   119     B      8
+   120     C      9
+   121 C#/Db      9
+   122     D      9
+   123 D#/Eb      9
+   124     E      9
+   125     F      9
+   126 F#/Gb      9
+   127     G      9
+</PRE></TD></TR></TBODY></TABLE></P>
+
+When playing a note on channel 9, one of the following percussion sound names 
+can be used to specify the note:
+
+<P><TABLE><TBODY><TR><TD bgcolor="black">&nbsp;</TD><TD><PRE class="sample">Number Sound
+------ ------------------
+    35 Acoustic Bass Drum     
+    36 Bass Drum 1            
+    37 Side Stick             
+    38 Acoustic Snare         
+    39 Hand Clap              
+    40 Electric Snare         
+    41 Low Floor Tom          
+    42 Closed Hi-Hat          
+    43 High Floor Tom         
+    44 Pedal Hi-Hat           
+    45 Low Tom                
+    46 Open Hi-Hat            
+    47 Low-Mid Tom            
+    48 Hi-Mid Tom             
+    49 Crash Cymbal 1         
+    50 High Tom               
+    51 Ride Cymbal 1          
+    52 Chinese Cymbal         
+    53 Ride Bell              
+    54 Tambourine             
+    55 Splash Cymbal          
+    56 Cowbell                
+    57 Crash Cymbal 2         
+    58 Vibraslap
+    59 Ride Cymbal 2      
+    60 Hi Bongo           
+    61 Low Bongo          
+    62 Mute Hi Conga      
+    63 Open Hi Conga      
+    64 Low Conga          
+    65 High Timbale       
+    66 Low Timbale        
+    67 High Agogo         
+    68 Low Agogo          
+    69 Cabasa             
+    70 Maracas            
+    71 Short Whistle      
+    72 Long Whistle       
+    73 Short Guiro        
+    74 Long Guiro         
+    75 Claves             
+    76 Hi Wood Block      
+    77 Low Wood Block     
+    78 Mute Cuica         
+    79 Open Cuica         
+    80 Mute Triangle      
+    81 Open Triangle      
+</PRE></TD></TR></TBODY></TABLE></P>
+
+These precussion sound names can be specified case insensitive.
+
+<H2><A name="controllers">Controllers</A></H2>
+<P>
+
+Controllers can be specified with their name or number. Controller names are 
+case insensitive. The defined controllers are:
+
+</P><P><TABLE><TBODY><TR><TD bgcolor="black">&nbsp;</TD><TD><PRE class="sample">Ctrl Description
+---- ---------------------------------------------
+   0 Bank Select (coarse)                               
+   1 Modulation Wheel (coarse)                          
+   2 Breath controller (coarse)                         
+   4 Foot Pedal (coarse)                                
+   5 Portamento Time (coarse)                           
+   6 Data Entry (coarse)                                
+   7 Volume (coarse)                                    
+   8 Balance (coarse)                                   
+  10 Pan position (coarse)                              
+  11 Expression (coarse)                                
+  12 Effect Control 1 (coarse)                          
+  13 Effect Control 2 (coarse)                          
+  16 General Purpose Slider 1                           
+  17 General Purpose Slider 2                           
+  18 General Purpose Slider 3                           
+  19 General Purpose Slider 4                           
+  32 Bank Select (fine)                                 
+  33 Modulation Wheel (fine)                            
+  34 Breath controller (fine)                           
+  36 Foot Pedal (fine)                                  
+  37 Portamento Time (fine)                             
+  38 Data Entry (fine)                                  
+  39 Volume (fine)                                      
+  40 Balance (fine)                                     
+  42 Pan position (fine)                                
+  43 Expression (fine)                                  
+  44 Effect Control 1 (fine)                            
+  45 Effect Control 2 (fine)                            
+  64 Hold Pedal (on/off)                                
+  65 Portamento (on/off)                                
+  66 Sustenuto Pedal (on/off)                           
+  67 Soft Pedal (on/off)                                
+  68 Legato Pedal (on/off)                              
+  69 Hold 2 Pedal (on/off)                              
+  70 Sound Variation                                    
+  71 Sound Timbre                                       
+  72 Sound Release Time                                 
+  73 Sound Attack Time                                  
+  74 Sound Brightness                                   
+  75 Sound Control 6                                    
+  76 Sound Control 7                                    
+  77 Sound Control 8                                    
+  78 Sound Control 9                                    
+  79 Sound Control 10                                   
+  80 General Purpose Button 1 (on/off)                  
+  81 General Purpose Button 2 (on/off)                  
+  82 General Purpose Button 3 (on/off)                  
+  83 General Purpose Button 4 (on/off)                  
+  91 Effects Level                                      
+  92 Tremulo Level                                      
+  93 Chorus Level                                       
+  94 Celeste Level                                      
+  95 Phaser Level                                       
+  96 ata Button increment                               
+  97 Data Button decrement                              
+  98 Non-registered Parameter (fine)                    
+  99 Non-registered Parameter (coarse)                  
+ 100 Registered Parameter (fine)                        
+ 101 Registered Parameter (coarse)                      
+ 120 All Sound Off                                      
+ 121 All Controllers Off                                
+ 122 Local Keyboard (on/off)                            
+ 123 All Notes Off                                      
+ 124 Omni Mode Off                                      
+ 125 Omni Mode On                                       
+ 126 Mono Operation                                     
+ 127 Poly Operation                                     
+</PRE></TD></TR></TBODY></TABLE></P>
+
+<H2><A name="programs">Programs</A></H2>
+<P>
+
+Program names (also known as patches or instruments) can be specified with
+their name or number. Names are case insensitive. Programs known in the General
+Midi standard are:
+
+</P><P><TABLE><TBODY><TR><TD bgcolor="black">&nbsp;</TD><TD><PRE class="sample">Program Family               Description
+------- -------------------- -----------
+      0 Piano                Acoustic Grand        
+      1 Piano                Bright Acoustic       
+      2 Piano                Electric Grand        
+      3 Piano                Honky-Tonk            
+      4 Piano                Electric Piano 1      
+      5 Piano                Electric Piano 2      
+      6 Piano                Harpsichord           
+      7 Piano                Clavinet              
+      8 Chromatic percussion Celesta      
+      9 Chromatic percussion Glockenspiel 
+     10 Chromatic percussion Music Box    
+     11 Chromatic percussion Vibraphone   
+     12 Chromatic percussion Marimba      
+     13 Chromatic percussion Xylophone    
+     14 Chromatic percussion Tubular Bells
+     15 Chromatic percussion Dulcimer     
+     16 Organ                Drawbar Organ         
+     17 Organ                Percussive Organ      
+     18 Organ                Rock Organ            
+     19 Organ                Church Organ          
+     20 Organ                Reed Organ            
+     21 Organ                Accoridan             
+     22 Organ                Harmonica             
+     23 Organ                Tango Accordian       
+     24 Guitar               Nylon String Guitar   
+     25 Guitar               Steel String Guitar   
+     26 Guitar               Electric Jazz Guitar  
+     27 Guitar               Electric Clean Guitar 
+     28 Guitar               Electric Muted Guitar 
+     29 Guitar               Overdriven Guitar     
+     30 Guitar               Distortion Guitar     
+     31 Guitar               Guitar Harmonics      
+     32 Bass                 Acoustic Bass             
+     33 Bass                 Electric Bass(finger)     
+     34 Bass                 Electric Bass(pick)       
+     35 Bass                 Fretless Bass             
+     36 Bass                 Slap Bass 1               
+     37 Bass                 Slap Bass 2               
+     38 Bass                 Synth Bass 1              
+     39 Bass                 Synth Bass 2              
+     40 Solo strings         Violin             
+     41 Solo strings         Viola              
+     42 Solo strings         Cello              
+     43 Solo strings         Contrabass         
+     44 Solo strings         Tremolo Strings    
+     45 Solo strings         Pizzicato Strings  
+     46 Solo strings         Orchestral Strings 
+     47 Solo strings         Timpani            
+     48 Ensemble             String Ensemble 1         
+     49 Ensemble             String Ensemble 2         
+     50 Ensemble             SynthStrings 1            
+     51 Ensemble             SynthStrings 2            
+     52 Ensemble             Choir Aahs                
+     53 Ensemble             Voice Oohs                
+     54 Ensemble             Synth Voice               
+     55 Ensemble             Orchestra Hit             
+     56 Brass                Trumpet        
+     57 Brass                Trombone       
+     58 Brass                Tuba           
+     59 Brass                Muted Trumpet  
+     60 Brass                French Horn    
+     61 Brass                Brass Section  
+     62 Brass                SynthBrass 1   
+     63 Brass                SynthBrass 2   
+     64 Reed                 Soprano Sax               
+     65 Reed                 Alto Sax                  
+     66 Reed                 Tenor Sax                 
+     67 Reed                 Baritone Sax              
+     68 Reed                 Oboe                      
+     69 Reed                 English Horn              
+     70 Reed                 Bassoon                   
+     71 Reed                 Clarinet                  
+     72 Pipe                 Piccolo     
+     73 Pipe                 Flute       
+     74 Pipe                 Recorder    
+     75 Pipe                 Pan Flute   
+     76 Pipe                 Blown Bottle
+     77 Pipe                 Skakuhachi  
+     78 Pipe                 Whistle     
+     79 Pipe                 Ocarina     
+     80 Synth lead           Lead 1 (square)           
+     81 Synth lead           Lead 2 (sawtooth)         
+     82 Synth lead           Lead 3 (calliope)         
+     83 Synth lead           Lead 4 (chiff)            
+     84 Synth lead           Lead 5 (charang)          
+     85 Synth lead           Lead 6 (voice)            
+     86 Synth lead           Lead 7 (fifths)           
+     87 Synth lead           Lead 8 (bass+lead)        
+     88 Synth pad            Pad 1 (new age)    
+     89 Synth pad            Pad 2 (warm)      
+     90 Synth pad            Pad 3 (polysynth) 
+     91 Synth pad            Pad 4 (choir)     
+     92 Synth pad            Pad 5 (bowed)     
+     93 Synth pad            Pad 6 (metallic)  
+     94 Synth pad            Pad 7 (halo)      
+     95 Synth pad            Pad 8 (sweep)     
+     96 Synth effects        FX 1 (rain)               
+     97 Synth effects        FX 2 (soundtrack)         
+     98 Synth effects        FX 3 (crystal)            
+     99 Synth effects        FX 4 (atmosphere)         
+    100 Synth effects        FX 5 (brightness)         
+    101 Synth effects        FX 6 (goblins)            
+    102 Synth effects        FX 7 (echoes)             
+    103 Synth effects        FX 8 (sci-fi)              
+    104 Ethnic               Sitar   
+    105 Ethnic               Banjo   
+    106 Ethnic               Shamisen
+    107 Ethnic               Koto    
+    108 Ethnic               Kalimba 
+    109 Ethnic               Bagpipe 
+    110 Ethnic               Fiddle  
+    111 Ethnic               Shanai  
+    112 Percussive           Tinkle Bell               
+    113 Percussive           Agogo                     
+    114 Percussive           Steel Drums               
+    115 Percussive           Woodblock                 
+    116 Percussive           Taiko Drum                
+    117 Percussive           Melodic Tom               
+    118 Percussive           Synth Drum                
+    119 Percussive           Reverse Cymbal            
+    120 Sound effects        Guitar Fret Noise
+    121 Sound effects        Breath Noise     
+    122 Sound effects        Seashore         
+    123 Sound effects        Bird Tweet       
+    124 Sound effects        Telephone Ring   
+    125 Sound effects        Helicopter       
+    126 Sound effects        Applause         
+    127 Sound effects        Gunshot          
+</PRE></TD></TR></TBODY></TABLE></P>
+
+Some midi devices may provide different drum kits for channel 9. General midi 
+provides only one. 
+  
+
+
+<H2><A name="keywords">KEYWORDS</A></H2>
+<P>
+midi
+</P><H2><A name="copyright">COPYRIGHT</A></H2>
+<P>
+Copyright © 2006-2008 Jos Decoster &lt;jos.decoster@gmail.com&gt;<BR>
+
+<SCRIPT src="./tclmidi_files/urchin.js" type="text/javascript">
+</SCRIPT>
+<SCRIPT type="text/javascript">
+_uacct = "UA-1434497-1";
+urchinTracker();
+</SCRIPT>
+
+
+
+</P></BODY></HTML>

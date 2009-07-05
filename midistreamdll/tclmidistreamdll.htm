@@ -1,0 +1,208 @@
+
+<!-- saved from url=(0054)http://jos.decoster.googlepages.com/midistreamdll.html -->
+<HTML><HEAD><META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<TITLE>midistreamdll - Wrapper for the Win32 Midi stream API </TITLE>
+</HEAD><BODY>
+<H1> midistreamdll(n) 0.4  "Wrapper for the Win32 Midi stream API"</H1>
+<H2><A name="name">NAME</A></H2>
+<P>
+</P><P> midistreamdll - Wrapper for the Win32 Midi stream API
+
+
+
+
+</P><H2><A name="synopsis">SYNOPSIS</A></H2>
+<P>
+package require <B>Tcl 8.5</B><BR>
+<BR><TABLE border="1" width="100&percnt;" cellspacing="0" cellpadding="0"><TBODY><TR bgcolor="lightyellow"><TD bgcolor="lightyellow"><TABLE 0="" width="100&percnt;" cellspacing="0" cellpadding="0"><TBODY><TR valign="top"><TD><A href="http://jos.decoster.googlepages.com/midistreamdll.html#1"><B class="cmd">midistreamdll::devs</B> </A></TD></TR>
+<TR valign="top"><TD><A href="http://jos.decoster.googlepages.com/midistreamdll.html#2"><B class="cmd">midistreamdll::open</B> <I class="arg">deviceId</I></A></TD></TR>
+<TR valign="top"><TD><A href="http://jos.decoster.googlepages.com/midistreamdll.html#3"><I class="arg">midiStreamId</I> <STRONG>close</STRONG></A></TD></TR>
+<TR valign="top"><TD><A href="http://jos.decoster.googlepages.com/midistreamdll.html#4"><I class="arg">midiStreamId</I> <STRONG>out</STRONG> <I class="arg">headerId</I></A></TD></TR>
+<TR valign="top"><TD><A href="http://jos.decoster.googlepages.com/midistreamdll.html#5"><I class="arg">midiStreamId</I> <STRONG>pause</STRONG></A></TD></TR>
+<TR valign="top"><TD><A href="http://jos.decoster.googlepages.com/midistreamdll.html#6"><I class="arg">midiStreamId</I> <STRONG>play</STRONG></A></TD></TR>
+<TR valign="top"><TD><A href="http://jos.decoster.googlepages.com/midistreamdll.html#7"><I class="arg">midiStreamId</I> <STRONG>position</STRONG></A></TD></TR>
+<TR valign="top"><TD><A href="http://jos.decoster.googlepages.com/midistreamdll.html#8"><I class="arg">midiStreamId</I> <STRONG>set</STRONG> <I class="arg">option</I> <I class="arg">value</I></A></TD></TR>
+<TR valign="top"><TD><A href="http://jos.decoster.googlepages.com/midistreamdll.html#9"><I class="arg">midiStreamId</I> <STRONG>short</STRONG> <I class="arg">byte0</I> ?<I class="arg">byte1</I>? ?<I class="arg">byte2</I>?</A></TD></TR>
+<TR valign="top"><TD><A href="http://jos.decoster.googlepages.com/midistreamdll.html#10"><I class="arg">midiStreamId</I> <STRONG>stop</STRONG></A></TD></TR>
+<TR valign="top"><TD><A href="http://jos.decoster.googlepages.com/midistreamdll.html#11"><B class="cmd">midistreamdll::header</B> </A></TD></TR>
+<TR valign="top"><TD><A href="http://jos.decoster.googlepages.com/midistreamdll.html#12"><I class="arg">headerId</I> <STRONG>add</STRONG> <I class="arg">eventType</I> <I class="arg">deltaTime</I> <I class="arg">eventData</I></A></TD></TR>
+<TR valign="top"><TD><A href="http://jos.decoster.googlepages.com/midistreamdll.html#13"><I class="arg">headerId</I> <STRONG>destroy</STRONG></A></TD></TR>
+</TBODY></TABLE></TD></TR></TBODY></TABLE>
+</P><H2><A name="description">DESCRIPTION</A></H2>
+<P>
+
+</P><P>
+
+This page describes the Tcl <STRONG>midistreamdll</STRONG> package, a wrapper for the
+Win32 Midi stream API. Commands to query the available Midi devices, open a Midi
+stream device and send Midi data to it are discussed here.
+
+</P><P>
+
+The <STRONG>midistreamdll</STRONG> package adds the namespace midistreamdll to the Tcl
+interpreter in which it is loaded. In this namespace, the main commands to
+work with midi stream are created:
+
+</P><DL>
+<DT>midistreamdll::devs</DT><DD>
+</DD><DT>midistreamdll::open</DT><DD>
+</DD><DT>midistreamdll::header</DT><DD>
+</DD></DL>
+
+<H2><A name="midistreamdlldevs">midistreamdll::devs</A></H2>
+<P>
+
+</P><DL>
+
+<DT><A name="1"><B class="cmd">midistreamdll::devs</B> </A></DT><DD>
+
+
+This command returns a list of names of the available Midi devices. 
+
+</DD></DL>
+
+<H2><A name="midistreamdllopen">midistreamdll::open</A></H2>
+<P>
+
+</P><DL>
+
+<DT><A name="2"><B class="cmd">midistreamdll::open</B> <I class="arg">deviceId</I></A></DT><DD>
+
+
+This command will open the specified Midi stream device and returns a unique
+Midi stream device id. This id should be used to manipulate the Midi device
+later on. A Midi device is specified as an integer index in the list of Midi
+devices as obtained with the <B class="cmd">midistreamdll::devs</B> command.
+
+<BR><BR>
+</DD><DT><A name="3"><I class="arg">midiStreamId</I> <STRONG>close</STRONG></A></DT><DD>
+
+
+Closes the Midi stream devices.
+
+<BR><BR>
+</DD><DT><A name="4"><I class="arg">midiStreamId</I> <STRONG>out</STRONG> <I class="arg">headerId</I></A></DT><DD>
+
+
+Stream the specified Midi header, which must be created with the 
+<B class="cmd">midistreamdll::header</B> command, to the Midi stream device.
+
+<BR><BR>
+</DD><DT><A name="5"><I class="arg">midiStreamId</I> <STRONG>pause</STRONG></A></DT><DD>
+
+
+Pauses the Midi stream device.
+
+<BR><BR>
+</DD><DT><A name="6"><I class="arg">midiStreamId</I> <STRONG>play</STRONG></A></DT><DD>
+
+
+Starts playback of the Midi stream device.
+
+<BR><BR>
+</DD><DT><A name="7"><I class="arg">midiStreamId</I> <STRONG>position</STRONG></A></DT><DD>
+
+
+Returns the current position in the stream being sequenced as Midi ticks.
+
+<BR><BR>
+</DD><DT><A name="8"><I class="arg">midiStreamId</I> <STRONG>set</STRONG> <I class="arg">option</I> <I class="arg">value</I></A></DT><DD>
+
+
+Set the specified option. Known options are:
+
+<BR><BR>
+<DL>
+
+<DT><STRONG>-timediv</STRONG> integer</DT><DD>
+
+Set the number of ticks per beat.
+
+<BR><BR>
+</DD><DT><STRONG></STRONG></DT><DD>
+
+</DD></DL>
+
+</DD><DT><A name="9"><I class="arg">midiStreamId</I> <STRONG>short</STRONG> <I class="arg">byte0</I> ?<I class="arg">byte1</I>? ?<I class="arg">byte2</I>?</A></DT><DD>
+
+
+Immediately plays a short event on the Midi device.
+
+<BR><BR>
+</DD><DT><A name="10"><I class="arg">midiStreamId</I> <STRONG>stop</STRONG></A></DT><DD>
+
+
+Stops playback of the Midi stream device.
+
+</DD></DL>
+
+<H2><A name="midistreamdllheader">midistreamdll::header</A></H2>
+<P>
+
+</P><DL>
+
+<DT><A name="11"><B class="cmd">midistreamdll::header</B> </A></DT><DD>
+
+
+This commands creates a new Midi header, suitable for use with the Midi stream
+<B class="cmd">out</B> command and returns a unique header id. This id should be used to
+manipulate the Midi header later on.
+
+<BR><BR>
+</DD><DT><A name="12"><I class="arg">headerId</I> <STRONG>add</STRONG> <I class="arg">eventType</I> <I class="arg">deltaTime</I> <I class="arg">eventData</I></A></DT><DD>
+
+
+Adds the specified event data to the Midi header with specified
+delta-time. Known event types are:
+
+<BR><BR>
+<DL>
+
+<DT><STRONG>event</STRONG> deltaTime byteList</DT><DD>
+
+Adds event specified as a list of bytes to the Midi header. When an empty list
+is specified, a nop event is added. For 1 up to 3 bytes, the data is added as a
+short event. For more bytes, the data is added as a long event.
+
+<BR><BR>
+</DD><DT><STRONG>long</STRONG> deltaTime byteList</DT><DD>
+
+Adds event specified as a list of bytes to the Midi header. 
+
+<BR><BR>
+</DD><DT><STRONG>nop</STRONG> deltaTime</DT><DD>
+
+Adds nop event to the Midi header.
+
+<BR><BR>
+</DD><DT><STRONG>short</STRONG> deltaTime byte0 ?byte1 ?byte2??</DT><DD>
+
+Adds one, two or three bytes to the Midi header as short event.
+
+<BR><BR>
+</DD><DT><STRONG>tempo</STRONG> deltaTime tempo</DT><DD>
+
+Adds tempo event to the Midi header.
+
+<BR><BR>
+</DD><DT><STRONG></STRONG></DT><DD>
+
+</DD></DL>
+
+</DD><DT><A name="13"><I class="arg">headerId</I> <STRONG>destroy</STRONG></A></DT><DD>
+
+
+Destroys the Midi header.
+
+</DD></DL>
+
+
+<H2><A name="keywords">KEYWORDS</A></H2>
+<P>
+midi, stream
+</P><H2><A name="copyright">COPYRIGHT</A></H2>
+<P>
+Copyright © 2007-2008 Jos Decoster &lt;jos.decoster@gmail.com&gt;<BR>
+
+
+</P></BODY></HTML>
