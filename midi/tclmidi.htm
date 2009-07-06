@@ -1,252 +1,260 @@
+<! -- -*- tcl -*- doctools manpage
+   -->
+<html><head>
+<title>midi - Midi file, track and event handling </title>
+</head>
+<! -- Generated from file 'midi.man' by tcllib/doctools with format 'html'
+   -->
+<! -- Copyright &copy; 2006-2008 Jos Decoster &lt;jos.decoster@gmail.com&gt;
+   -->
+<! -- CVS: $Id$ midi.n
+   -->
 
-<!-- saved from url=(0045)http://jos.decoster.googlepages.com/midi.html -->
-<HTML><HEAD><META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<TITLE>midi - Midi file, track and event handling </TITLE>
-</HEAD><BODY>
-<H1> midi(n) 0.11  "Midi file, track and event handling"</H1>
-<H2><A name="name">NAME</A></H2>
-<P>
-</P><P> midi - Package to handle midi files, tracks and events
+<body>
+<h1> midi(n) 0.11  &quot;Midi file, track and event handling&quot;</h1>
+<h2><a name="name">NAME</a></h2>
+<p>
+<p> midi - Package to handle midi files, tracks and events
 
 
 
 
-</P><H2><A name="synopsis">SYNOPSIS</A></H2>
-<P>
-package require <B>Tcl 8.4</B><BR>
-<BR><TABLE border="1" width="100&percnt;" cellspacing="0" cellpadding="0"><TBODY><TR bgcolor="lightyellow"><TD bgcolor="lightyellow"><TABLE 0="" width="100&percnt;" cellspacing="0" cellpadding="0"><TBODY><TR valign="top"><TD><A href="http://jos.decoster.googlepages.com/midi.html#1"><B class="cmd">midi::file</B> ?<I class="arg">options</I>? ...</A></TD></TR>
-<TR valign="top"><TD><A href="http://jos.decoster.googlepages.com/midi.html#2"><I class="arg">midiFileId</I> <STRONG>destroy</STRONG></A></TD></TR>
-<TR valign="top"><TD><A href="http://jos.decoster.googlepages.com/midi.html#3"><I class="arg">midiFileId</I> <STRONG>reset</STRONG></A></TD></TR>
-<TR valign="top"><TD><A href="http://jos.decoster.googlepages.com/midi.html#4"><I class="arg">midiFileId</I> <STRONG>validate</STRONG></A></TD></TR>
-<TR valign="top"><TD><A href="http://jos.decoster.googlepages.com/midi.html#5"><I class="arg">midiFileId</I> <STRONG>validate_option</STRONG> <I class="arg">option</I> <I class="arg">value</I></A></TD></TR>
-<TR valign="top"><TD><A href="http://jos.decoster.googlepages.com/midi.html#6"><I class="arg">midiFileId</I> <STRONG>cget</STRONG> <I class="arg">option</I></A></TD></TR>
-<TR valign="top"><TD><A href="http://jos.decoster.googlepages.com/midi.html#7"><I class="arg">midiFileId</I> <STRONG>configure</STRONG></A></TD></TR>
-<TR valign="top"><TD><A href="http://jos.decoster.googlepages.com/midi.html#8"><I class="arg">midiFileId</I> <STRONG>configure</STRONG> <I class="arg">option</I></A></TD></TR>
-<TR valign="top"><TD><A href="http://jos.decoster.googlepages.com/midi.html#9"><I class="arg">midiFileId</I> <STRONG>configure</STRONG> <I class="arg">option value</I> ...</A></TD></TR>
-<TR valign="top"><TD><A href="http://jos.decoster.googlepages.com/midi.html#10"><I class="arg">midiFileId</I> <STRONG>read</STRONG> <I class="arg">fileName</I></A></TD></TR>
-<TR valign="top"><TD><A href="http://jos.decoster.googlepages.com/midi.html#11"><I class="arg">midiFileId</I> <STRONG>write</STRONG> <I class="arg">fileName</I> ?<I class="arg">option value ...</I>?</A></TD></TR>
-<TR valign="top"><TD><A href="http://jos.decoster.googlepages.com/midi.html#12"><I class="arg">midiFileId</I> <STRONG>dump</STRONG> ?<I class="arg">option value ...</I>?</A></TD></TR>
-<TR valign="top"><TD><A href="http://jos.decoster.googlepages.com/midi.html#13"><I class="arg">midiFileId</I> <STRONG>flatten</STRONG> ?<I class="arg">option value ...</I>?</A></TD></TR>
-<TR valign="top"><TD><A href="http://jos.decoster.googlepages.com/midi.html#14"><I class="arg">midiFileId</I> <STRONG>clicks</STRONG> <I class="arg">noteLength</I></A></TD></TR>
-<TR valign="top"><TD><A href="http://jos.decoster.googlepages.com/midi.html#15"><I class="arg">midiFileId</I> <STRONG>measure</STRONG> ?<I class="arg">option value ...</I>?</A></TD></TR>
-<TR valign="top"><TD><A href="http://jos.decoster.googlepages.com/midi.html#16"><B class="cmd">midi::track</B> ?<I class="arg">options</I>? ...</A></TD></TR>
-<TR valign="top"><TD><A href="http://jos.decoster.googlepages.com/midi.html#17"><I class="arg">midiTrackId</I> <STRONG>destroy</STRONG></A></TD></TR>
-<TR valign="top"><TD><A href="http://jos.decoster.googlepages.com/midi.html#18"><I class="arg">midiTrackId</I> <STRONG>reset</STRONG></A></TD></TR>
-<TR valign="top"><TD><A href="http://jos.decoster.googlepages.com/midi.html#19"><I class="arg">midiTrackId</I> <STRONG>validate</STRONG></A></TD></TR>
-<TR valign="top"><TD><A href="http://jos.decoster.googlepages.com/midi.html#20"><I class="arg">midiTrackId</I> <STRONG>validate_option</STRONG> <I class="arg">option</I> <I class="arg">value</I></A></TD></TR>
-<TR valign="top"><TD><A href="http://jos.decoster.googlepages.com/midi.html#21"><I class="arg">midiTrackId</I> <STRONG>cget</STRONG> <I class="arg">option</I></A></TD></TR>
-<TR valign="top"><TD><A href="http://jos.decoster.googlepages.com/midi.html#22"><I class="arg">midiTrackId</I> <STRONG>configure</STRONG></A></TD></TR>
-<TR valign="top"><TD><A href="http://jos.decoster.googlepages.com/midi.html#23"><I class="arg">midiTrackId</I> <STRONG>configure</STRONG> <I class="arg">option</I></A></TD></TR>
-<TR valign="top"><TD><A href="http://jos.decoster.googlepages.com/midi.html#24"><I class="arg">midiTrackId</I> <STRONG>configure</STRONG> <I class="arg">option value</I> ...</A></TD></TR>
-<TR valign="top"><TD><A href="http://jos.decoster.googlepages.com/midi.html#25"><I class="arg">midiTrackId</I> <STRONG>dump</STRONG></A></TD></TR>
-<TR valign="top"><TD><A href="http://jos.decoster.googlepages.com/midi.html#26"><B class="cmd">midi::event</B> <I class="arg">type</I> ?<I class="arg">options</I>? ...</A></TD></TR>
-<TR valign="top"><TD><A href="http://jos.decoster.googlepages.com/midi.html#27"><B class="cmd">midi::event::reset</B> <I class="arg">intList</I></A></TD></TR>
-<TR valign="top"><TD><A href="http://jos.decoster.googlepages.com/midi.html#28"><B class="cmd">midi::event::validate</B> <I class="arg">intList</I></A></TD></TR>
-<TR valign="top"><TD><A href="http://jos.decoster.googlepages.com/midi.html#29"><B class="cmd">midi::event::validate_option</B> <I class="arg">intList</I> ?<I class="arg">options</I>? ...</A></TD></TR>
-<TR valign="top"><TD><A href="http://jos.decoster.googlepages.com/midi.html#30"><B class="cmd">midi::event::cget</B> <I class="arg">intList</I> <I class="arg">option</I></A></TD></TR>
-<TR valign="top"><TD><A href="http://jos.decoster.googlepages.com/midi.html#31"><B class="cmd">midi::event::configure</B> <I class="arg">intList</I></A></TD></TR>
-<TR valign="top"><TD><A href="http://jos.decoster.googlepages.com/midi.html#32"><B class="cmd">midi::event::configure</B> <I class="arg">intList</I> <I class="arg">option</I></A></TD></TR>
-<TR valign="top"><TD><A href="http://jos.decoster.googlepages.com/midi.html#33"><B class="cmd">midi::event::configure</B> <I class="arg">intList</I> <I class="arg">option value</I> ...</A></TD></TR>
-<TR valign="top"><TD><A href="http://jos.decoster.googlepages.com/midi.html#34"><B class="cmd">midi::event::type</B> <I class="arg">intList</I></A></TD></TR>
-<TR valign="top"><TD><A href="http://jos.decoster.googlepages.com/midi.html#35"><B class="cmd">midi::event::type_meta_event</B> <I class="arg">intList</I></A></TD></TR>
-<TR valign="top"><TD><A href="http://jos.decoster.googlepages.com/midi.html#36"><B class="cmd">midi::event::dump</B> <I class="arg">intList</I></A></TD></TR>
-</TBODY></TABLE></TD></TR></TBODY></TABLE>
-</P><H2><A name="description">DESCRIPTION</A></H2>
-<P>
-</P><P>
+<h2><a name="synopsis">SYNOPSIS</a></h2>
+<p>
+package require <b>Tcl 8.4</b><br>
+<br><table border=1 width=100% cellspacing=0 cellpadding=0><tr            bgcolor=lightyellow><td bgcolor=lightyellow><table 0 width=100% cellspacing=0 cellpadding=0><tr valign=top ><td ><a href="#1"><b class='cmd'>midi::file</b> ?<i class='arg'>options</i>? ...</a></td></tr>
+<tr valign=top ><td ><a href="#2"><i class='arg'>midiFileId</i> <strong>destroy</strong></a></td></tr>
+<tr valign=top ><td ><a href="#3"><i class='arg'>midiFileId</i> <strong>reset</strong></a></td></tr>
+<tr valign=top ><td ><a href="#4"><i class='arg'>midiFileId</i> <strong>validate</strong></a></td></tr>
+<tr valign=top ><td ><a href="#5"><i class='arg'>midiFileId</i> <strong>validate_option</strong> <i class='arg'>option</i> <i class='arg'>value</i></a></td></tr>
+<tr valign=top ><td ><a href="#6"><i class='arg'>midiFileId</i> <strong>cget</strong> <i class='arg'>option</i></a></td></tr>
+<tr valign=top ><td ><a href="#7"><i class='arg'>midiFileId</i> <strong>configure</strong></a></td></tr>
+<tr valign=top ><td ><a href="#8"><i class='arg'>midiFileId</i> <strong>configure</strong> <i class='arg'>option</i></a></td></tr>
+<tr valign=top ><td ><a href="#9"><i class='arg'>midiFileId</i> <strong>configure</strong> <i class='arg'>option value</i> ...</a></td></tr>
+<tr valign=top ><td ><a href="#10"><i class='arg'>midiFileId</i> <strong>read</strong> <i class='arg'>fileName</i></a></td></tr>
+<tr valign=top ><td ><a href="#11"><i class='arg'>midiFileId</i> <strong>write</strong> <i class='arg'>fileName</i> ?<i class='arg'>option value ...</i>?</a></td></tr>
+<tr valign=top ><td ><a href="#12"><i class='arg'>midiFileId</i> <strong>dump</strong> ?<i class='arg'>option value ...</i>?</a></td></tr>
+<tr valign=top ><td ><a href="#13"><i class='arg'>midiFileId</i> <strong>flatten</strong> ?<i class='arg'>option value ...</i>?</a></td></tr>
+<tr valign=top ><td ><a href="#14"><i class='arg'>midiFileId</i> <strong>clicks</strong> <i class='arg'>noteLength</i></a></td></tr>
+<tr valign=top ><td ><a href="#15"><i class='arg'>midiFileId</i> <strong>measure</strong> ?<i class='arg'>option value ...</i>?</a></td></tr>
+<tr valign=top ><td ><a href="#16"><b class='cmd'>midi::track</b> ?<i class='arg'>options</i>? ...</a></td></tr>
+<tr valign=top ><td ><a href="#17"><i class='arg'>midiTrackId</i> <strong>destroy</strong></a></td></tr>
+<tr valign=top ><td ><a href="#18"><i class='arg'>midiTrackId</i> <strong>reset</strong></a></td></tr>
+<tr valign=top ><td ><a href="#19"><i class='arg'>midiTrackId</i> <strong>validate</strong></a></td></tr>
+<tr valign=top ><td ><a href="#20"><i class='arg'>midiTrackId</i> <strong>validate_option</strong> <i class='arg'>option</i> <i class='arg'>value</i></a></td></tr>
+<tr valign=top ><td ><a href="#21"><i class='arg'>midiTrackId</i> <strong>cget</strong> <i class='arg'>option</i></a></td></tr>
+<tr valign=top ><td ><a href="#22"><i class='arg'>midiTrackId</i> <strong>configure</strong></a></td></tr>
+<tr valign=top ><td ><a href="#23"><i class='arg'>midiTrackId</i> <strong>configure</strong> <i class='arg'>option</i></a></td></tr>
+<tr valign=top ><td ><a href="#24"><i class='arg'>midiTrackId</i> <strong>configure</strong> <i class='arg'>option value</i> ...</a></td></tr>
+<tr valign=top ><td ><a href="#25"><i class='arg'>midiTrackId</i> <strong>dump</strong></a></td></tr>
+<tr valign=top ><td ><a href="#26"><b class='cmd'>midi::event</b> <i class='arg'>type</i> ?<i class='arg'>options</i>? ...</a></td></tr>
+<tr valign=top ><td ><a href="#27"><b class='cmd'>midi::event::reset</b> <i class='arg'>intList</i></a></td></tr>
+<tr valign=top ><td ><a href="#28"><b class='cmd'>midi::event::validate</b> <i class='arg'>intList</i></a></td></tr>
+<tr valign=top ><td ><a href="#29"><b class='cmd'>midi::event::validate_option</b> <i class='arg'>intList</i> ?<i class='arg'>options</i>? ...</a></td></tr>
+<tr valign=top ><td ><a href="#30"><b class='cmd'>midi::event::cget</b> <i class='arg'>intList</i> <i class='arg'>option</i></a></td></tr>
+<tr valign=top ><td ><a href="#31"><b class='cmd'>midi::event::configure</b> <i class='arg'>intList</i></a></td></tr>
+<tr valign=top ><td ><a href="#32"><b class='cmd'>midi::event::configure</b> <i class='arg'>intList</i> <i class='arg'>option</i></a></td></tr>
+<tr valign=top ><td ><a href="#33"><b class='cmd'>midi::event::configure</b> <i class='arg'>intList</i> <i class='arg'>option value</i> ...</a></td></tr>
+<tr valign=top ><td ><a href="#34"><b class='cmd'>midi::event::type</b> <i class='arg'>intList</i></a></td></tr>
+<tr valign=top ><td ><a href="#35"><b class='cmd'>midi::event::type_meta_event</b> <i class='arg'>intList</i></a></td></tr>
+<tr valign=top ><td ><a href="#36"><b class='cmd'>midi::event::dump</b> <i class='arg'>intList</i></a></td></tr>
+</table></td></tr></table>
+<h2><a name="description">DESCRIPTION</a></h2>
+<p>
+<p>
 
-This page describes the Tcl <STRONG>midi</STRONG> package to process midi files. The
+This page describes the Tcl <strong>midi</strong> package to process midi files. The
 commands to read, write, create and edit midi files are discussed here.
 
-</P><P>
+<p>
 
-The <STRONG>midi</STRONG> package adds the namespace midi to the Tcl
+The <strong>midi</strong> package adds the namespace midi to the Tcl
 interpreter in which it is loaded. In this namespace, the main commands to
 work with midi files are created:
 
-</P><DL>
-<DT>midi::file</DT><DD>
-</DD><DT>midi::track</DT><DD>
-</DD><DT>midi::event</DT><DD>
-</DD></DL>
+<dl>
+<dt>midi::file<dd>
+<dt>midi::track<dd>
+<dt>midi::event<dd>
+</dl>
 
-<P> 
+<p> 
 
 The file and track commands have an object interface, much like Tk
 widgets. Midi events are represented as a list of integers.
 
-</P><H2><A name="midifile">midi::file</A></H2>
-<P>
+<h2><a name="midifile">midi::file</a></h2>
+<p>
 
-</P><DL>
+<dl>
 
-<DT><A name="1"><B class="cmd">midi::file</B> ?<I class="arg">options</I>? ...</A></DT><DD>
+<dt><a name="1"><b class='cmd'>midi::file</b> ?<i class='arg'>options</i>? ...</a><dd>
 
 
 This command will create a midi file object and returns a unique midi file
 id. This id should be used to manipulate the midi file later on. Known options
 are: 
 
-<BR><BR>
-<DL>
+<br><br>
+<dl>
 
-<DT><STRONG>-type</STRONG> integer</DT><DD>
+<dt><strong>-type</strong> integer<dd>
 
-Set the midi file type. Must be <STRONG>0</STRONG>, <STRONG>1</STRONG> or <STRONG>2</STRONG>. Default value is 1.
+Set the midi file type. Must be <strong>0</strong>, <strong>1</strong> or <strong>2</strong>. Default value is 1.
 
-<BR><BR>
-</DD><DT><STRONG>-time_division_type</STRONG> string</DT><DD>
+<br><br>
+<dt><strong>-time_division_type</strong> string<dd>
 
 Set the time divisiob type used in the midi file. Must be 
-<STRONG>ticks_per_beat</STRONG> or <STRONG>frames_per_second</STRONG>. Default values is <STRONG>ticks_per_beat</STRONG>.
+<strong>ticks_per_beat</strong> or <strong>frames_per_second</strong>. Default values is <strong>ticks_per_beat</strong>.
 
-<BR><BR>
-</DD><DT><STRONG>-ticks_per_beat</STRONG> integer</DT><DD>
+<br><br>
+<dt><strong>-ticks_per_beat</strong> integer<dd>
 
 Sets the number of ticks per beat (quarter note), only used when the time 
-division type is <STRONG>ticks_per_beat</STRONG>. Default value is 480.
+division type is <strong>ticks_per_beat</strong>. Default value is 480.
 
-<BR><BR>
-</DD><DT><STRONG>-frames_per_second</STRONG> integer</DT><DD>
+<br><br>
+<dt><strong>-frames_per_second</strong> integer<dd>
 
 Set the number of frames per second, only used when the time division type is 
-<STRONG>frames_per_second</STRONG>. Default value is -1.
+<strong>frames_per_second</strong>. Default value is -1.
 
-<BR><BR>
-</DD><DT><STRONG>-ticks_per_frame</STRONG> integer</DT><DD>
+<br><br>
+<dt><strong>-ticks_per_frame</strong> integer<dd>
 
 Set the number of ticks per frame, only used when the time division type is 
-<STRONG>frames_per_second</STRONG>. Default value is -1.
+<strong>frames_per_second</strong>. Default value is -1.
 
-<BR><BR>
-</DD><DT><STRONG>-tracks</STRONG> listOfTrackIds</DT><DD>
+<br><br>
+<dt><strong>-tracks</strong> listOfTrackIds<dd>
 
 Set the track to be included in the midi file. The tracks must be specified as
-a list of tracks id's obtained by calling the <B class="cmd">midi::track</B> command. By default, no tracks are added.
+a list of tracks id's obtained by calling the <b class='cmd'>midi::track</b> command. By default, no tracks are added.
 
-<BR><BR>
-</DD><DT><STRONG></STRONG></DT><DD>
+<br><br>
+<dt><strong></strong><dd>
 
-</DD></DL>
+</dl>
 
-</DD><DT><A name="2"><I class="arg">midiFileId</I> <STRONG>destroy</STRONG></A></DT><DD>
+<dt><a name="2"><i class='arg'>midiFileId</i> <strong>destroy</strong></a><dd>
 
 
 Reset and destroy a midi file object.
 
-<BR><BR>
-</DD><DT><A name="3"><I class="arg">midiFileId</I> <STRONG>reset</STRONG></A></DT><DD>
+<br><br>
+<dt><a name="3"><i class='arg'>midiFileId</i> <strong>reset</strong></a><dd>
 
 
 Reset a midi file object. Resetting a midi file object will clear the type and
 timing information and destroy all tracks (with reference count zero) of the
 midi file.
 
-<BR><BR>
-</DD><DT><A name="4"><I class="arg">midiFileId</I> <STRONG>validate</STRONG></A></DT><DD>
+<br><br>
+<dt><a name="4"><i class='arg'>midiFileId</i> <strong>validate</strong></a><dd>
 
 
 Validates a midi file object, including the tracks. Only the options required
 for a specific time division type are checked.
 
-<BR><BR>
-</DD><DT><A name="5"><I class="arg">midiFileId</I> <STRONG>validate_option</STRONG> <I class="arg">option</I> <I class="arg">value</I></A></DT><DD>
+<br><br>
+<dt><a name="5"><i class='arg'>midiFileId</i> <strong>validate_option</strong> <i class='arg'>option</i> <i class='arg'>value</i></a><dd>
 
 
 Validates a midi file object-option value. All options will be validated, even
 if a specified option is not necessary according to the time division type. All
-options accepted by the <B class="cmd">midi::file</B> command can be specified.
+options accepted by the <b class='cmd'>midi::file</b> command can be specified.
 
-<BR><BR>
-</DD><DT><A name="6"><I class="arg">midiFileId</I> <STRONG>cget</STRONG> <I class="arg">option</I></A></DT><DD>
+<br><br>
+<dt><a name="6"><i class='arg'>midiFileId</i> <strong>cget</strong> <i class='arg'>option</i></a><dd>
 
 
-Returns the current value of the configuration option given by <I class="arg">option</I>. 
-<I class="arg">Option</I> may have any of the values accepted by the 
-<B class="cmd">midi::file</B> command.
+Returns the current value of the configuration option given by <i class='arg'>option</i>. 
+<i class='arg'>Option</i> may have any of the values accepted by the 
+<b class='cmd'>midi::file</b> command.
 
-<BR><BR>
-</DD><DT><A name="7"><I class="arg">midiFileId</I> <STRONG>configure</STRONG></A></DT><DD>
+<br><br>
+<dt><a name="7"><i class='arg'>midiFileId</i> <strong>configure</strong></a><dd>
 
 
 Returns a list describing all of the available options. The returned list
 contains a sublist for each known option with the following elements: the
 option, the default value and the current value. Information is returned for
-all options accepted by the <B class="cmd">midi::file</B> command.
+all options accepted by the <b class='cmd'>midi::file</b> command.
 
-<BR><BR>
-</DD><DT><A name="8"><I class="arg">midiFileId</I> <STRONG>configure</STRONG> <I class="arg">option</I></A></DT><DD>
+<br><br>
+<dt><a name="8"><i class='arg'>midiFileId</i> <strong>configure</strong> <i class='arg'>option</i></a><dd>
 
 
-Returns list describing the named option. <I class="arg">Option</I> may have any of the
-values accepted by the <B class="cmd">midi::file</B> command. The returned list contains 3
+Returns list describing the named option. <i class='arg'>Option</i> may have any of the
+values accepted by the <b class='cmd'>midi::file</b> command. The returned list contains 3
 elements: the option, the default value and the current value.
 
-<BR><BR>
-</DD><DT><A name="9"><I class="arg">midiFileId</I> <STRONG>configure</STRONG> <I class="arg">option value</I> ...</A></DT><DD>
+<br><br>
+<dt><a name="9"><i class='arg'>midiFileId</i> <strong>configure</strong> <i class='arg'>option value</i> ...</a><dd>
 
 
 Modifies the given midi file option(s) to have the given value(s). The command
-returns an empty string. <I class="arg">Option</I> may have any of the values accepted by
-the <B class="cmd">midi::file</B> command.
+returns an empty string. <i class='arg'>Option</i> may have any of the values accepted by
+the <b class='cmd'>midi::file</b> command.
 
-<BR><BR>
-</DD><DT><A name="10"><I class="arg">midiFileId</I> <STRONG>read</STRONG> <I class="arg">fileName</I></A></DT><DD>
+<br><br>
+<dt><a name="10"><i class='arg'>midiFileId</i> <strong>read</strong> <i class='arg'>fileName</i></a><dd>
 
 
 Reads the specified midi file into the midi file object.
 
-<BR><BR>
-</DD><DT><A name="11"><I class="arg">midiFileId</I> <STRONG>write</STRONG> <I class="arg">fileName</I> ?<I class="arg">option value ...</I>?</A></DT><DD>
+<br><br>
+<dt><a name="11"><i class='arg'>midiFileId</i> <strong>write</strong> <i class='arg'>fileName</i> ?<i class='arg'>option value ...</i>?</a><dd>
 
 
 Writes the contents of the midi file object into the specified file. Known
 options are:
 
-<BR><BR>
-<DL>
+<br><br>
+<dl>
 
-<DT><STRONG>-running_status</STRONG> boolean</DT><DD>
+<dt><strong>-running_status</strong> boolean<dd>
 
 If set to true, the midi file will be written with running status, making the
 resulting output file smaller. If set to false (default), the midi file will be
 written without running status.
 
-<BR><BR>
-</DD><DT><STRONG>-tracks</STRONG> listOfTrackIds</DT><DD>
+<br><br>
+<dt><strong>-tracks</strong> listOfTrackIds<dd>
 
 Only write the specified tracks to the output file.
 
-<BR><BR>
-</DD><DT><STRONG></STRONG></DT><DD>
+<br><br>
+<dt><strong></strong><dd>
 
-</DD></DL>
+</dl>
 
-</DD><DT><A name="12"><I class="arg">midiFileId</I> <STRONG>dump</STRONG> ?<I class="arg">option value ...</I>?</A></DT><DD>
+<dt><a name="12"><i class='arg'>midiFileId</i> <strong>dump</strong> ?<i class='arg'>option value ...</i>?</a><dd>
 
 
 Writes a textual representation of the midi file object contents into the file
 specified with the -file option. If no file is specified, returns the textual
 representation of the midi file as a string. Known options are:
 
-<BR><BR>
-<DL>
+<br><br>
+<dl>
 
-<DT><STRONG>-file</STRONG> path</DT><DD>
+<dt><strong>-file</strong> path<dd>
 
 Dump the midi file to the specified output file.
 
-<BR><BR>
-</DD><DT><STRONG>-tracks</STRONG> listOfTrackIds</DT><DD>
+<br><br>
+<dt><strong>-tracks</strong> listOfTrackIds<dd>
 
 Only dump the specified tracks.
 
-<BR><BR>
-</DD><DT><STRONG></STRONG></DT><DD>
+<br><br>
+<dt><strong></strong><dd>
 
-</DD></DL>
+</dl>
 
-</DD><DT><A name="13"><I class="arg">midiFileId</I> <STRONG>flatten</STRONG> ?<I class="arg">option value ...</I>?</A></DT><DD>
+<dt><a name="13"><i class='arg'>midiFileId</i> <strong>flatten</strong> ?<i class='arg'>option value ...</i>?</a><dd>
 
 
 Creates a one track representation of a multi track midi file. This command
@@ -255,125 +263,128 @@ contains the delta time until the event associated with it can be
 processed. The second element in each sub-list contains a list of events,
 represented as lists of integers. Known options are:
 
-<BR><BR>
-<DL>
+<br><br>
+<dl>
 
-<DT><STRONG>-include_meta</STRONG> listOfMetaEventTypes</DT><DD>
+<dt><strong>-include_meta</strong> listOfMetaEventTypes<dd>
 
 Only include Meta events of specified types in the flattened
-output. Check <B class="cmd">midi::event::type_meta_event</B> for known Meta event
+output. Check <b class='cmd'>midi::event::type_meta_event</b> for known Meta event
 types.
 
-<BR><BR>
-</DD><DT><STRONG>-no_meta</STRONG> boolean</DT><DD>
+<br><br>
+<dt><strong>-no_meta</strong> boolean<dd>
 
 Do not include Meta events in the flattened output.
 
-<BR><BR>
-</DD><DT><STRONG>-no_sys_ex</STRONG> boolean</DT><DD>
+<br><br>
+<dt><strong>-no_sys_ex</strong> boolean<dd>
 
 Do not include SysEx events in the flattened output.
 
-<BR><BR>
-</DD><DT><STRONG>-tracks</STRONG> listOfTrackIds</DT><DD>
+<br><br>
+<dt><strong>-tracks</strong> listOfTrackIds<dd>
 
 Only flatten the specified tracks.
 
-<BR><BR>
-</DD><DT><STRONG></STRONG></DT><DD>
+<br><br>
+<dt><strong></strong><dd>
 
-</DD></DL>
+</dl>
 
-</DD><DT><A name="14"><I class="arg">midiFileId</I> <STRONG>clicks</STRONG> <I class="arg">noteLength</I></A></DT><DD>
+<dt><a name="14"><i class='arg'>midiFileId</i> <strong>clicks</strong> <i class='arg'>noteLength</i></a><dd>
 
 
 Calculates the length of a note in clicks for common note lengths. Lengths 
-understood by this method are: <STRONG>1</STRONG>, <STRONG>1.</STRONG>, <STRONG>1/2</STRONG>, 
-<STRONG>1/2.</STRONG>, <STRONG>1/2t</STRONG>, <STRONG>1/4</STRONG>, <STRONG>1/4.</STRONG>, <STRONG>1/4t</STRONG>, 
-<STRONG>1/8</STRONG>, <STRONG>1/8.</STRONG>, <STRONG>1/8t</STRONG>, <STRONG>1/16</STRONG>, <STRONG>1/16.</STRONG>, 
-<STRONG>1/16t</STRONG>, <STRONG>1/32</STRONG>, <STRONG>1/32.</STRONG>, <STRONG>1/32t</STRONG>, <STRONG>1/64</STRONG>, 
-<STRONG>1/64.</STRONG> and <STRONG>1/64t.</STRONG>  Lengths with a <STRONG>.</STRONG> (dot) add half of 
-the length to the fraction, lengths with a <STRONG>t</STRONG> are used for triplets. 
-This functions can only be used when the <STRONG>-time_division_type</STRONG> option is
-set to <STRONG>ticks_per_beat</STRONG> and the <STRONG>-ticks_per_beat</STRONG> option has been 
+understood by this method are: <strong>1</strong>, <strong>1.</strong>, <strong>1/2</strong>, 
+<strong>1/2.</strong>, <strong>1/2t</strong>, <strong>1/4</strong>, <strong>1/4.</strong>, <strong>1/4t</strong>, 
+<strong>1/8</strong>, <strong>1/8.</strong>, <strong>1/8t</strong>, <strong>1/16</strong>, <strong>1/16.</strong>, 
+<strong>1/16t</strong>, <strong>1/32</strong>, <strong>1/32.</strong>, <strong>1/32t</strong>, <strong>1/64</strong>, 
+<strong>1/64.</strong> and <strong>1/64t.</strong>  Lengths with a <strong>.</strong> (dot) add half of 
+the length to the fraction, lengths with a <strong>t</strong> are used for triplets. 
+This functions can only be used when the <strong>-time_division_type</strong> option is
+set to <strong>ticks_per_beat</strong> and the <strong>-ticks_per_beat</strong> option has been 
 initialised.
 
-<BR><BR>
-</DD><DT><A name="15"><I class="arg">midiFileId</I> <STRONG>measure</STRONG> ?<I class="arg">option value ...</I>?</A></DT><DD>
+<br><br>
+<dt><a name="15"><i class='arg'>midiFileId</i> <strong>measure</strong> ?<i class='arg'>option value ...</i>?</a><dd>
 
 
 This command can be used to generate event list from a simplied input format. By
 only specifying note names and durations, an event list suitable for midi-tracks
 can be obtained. This command will only generate note-on and note-off event,
-other event still need to be added to the event list with the <B class="cmd">midi::event</B>
+other event still need to be added to the event list with the <b class='cmd'>midi::event</b>
 command. Only a list of non-overlapping notes can be specified. It durations of
 notes overlap, create different event-lists with multiple calls to this command
-and later on merge the resulting event lists with the <B class="cmd">midi::merge</B> command.
+and later on merge the resulting event lists with the <b class='cmd'>midi::merge</b> command.
 
-<BR><BR>
-<DL>
+<br><br>
+<dl>
 
-<DT><STRONG>-channel</STRONG> integer</DT><DD> Channel on which to play the specified notes.
+<dt><strong>-channel</strong> integer<dd> Channel on which to play the specified notes.
 
-<BR><BR>
-</DD><DT><STRONG>-events</STRONG> listOfListOfNotes</DT><DD> A list of note-lists. Each such note-list
+<br><br>
+<dt><strong>-events</strong> listOfListOfNotes<dd> A list of note-lists. Each such note-list
 contains a duration, a list of notes and optionally a velocity. A duration must
-be specified as a note-length understood by the <B class="cmd">midi::file::clicks</B>
+be specified as a note-length understood by the <b class='cmd'>midi::file::clicks</b>
 method. Notes can be specified using their midi note-number or their
-note-name. Check the <A href="http://jos.decoster.googlepages.com/midi.html#notes">Notes</A> section for valid note numbers and valid
+note-name. Check the <a href="#notes">Notes</a> section for valid note numbers and valid
 note names. In addition to the notes found in that section, it is possible to
-use <STRONG>r</STRONG> or <STRONG>R</STRONG> to specify a rest. The optional velocity must be an
+use <strong>r</strong> or <strong>R</strong> to specify a rest. The optional velocity must be an
 integer in the range 0..127. Default value is 127.
 
 The following example show how to generate an event list of a C-major scale
 played as quarter notes and followed by a C-major chord on channel 4:
 
-<P><TABLE><TBODY><TR><TD bgcolor="black">&nbsp;</TD><TD><PRE class="sample">set mf [midi::file -type 1 -time_division_type ticks_per_beat -ticks_per_beat 480]
+<p><table><tr><td bgcolor=black>&nbsp;</td><td><pre class='sample'>
+set mf [midi::file -type 1 -time_division_type ticks_per_beat -ticks_per_beat 480]
 set el [$mf measure -channel 4 -events {{1/4 C5} {1/4 D5} {1/4 E5} {1/4 F5} {1/4 G5} {1/4 A5} {1/4 B5} {1/4 C6} {1/1 {C5 E5 G5 C6}}}]
-</PRE></TD></TR></TBODY></TABLE></P>
+</pre></td></tr></table></p>
 
-Check the <A href="http://jos.decoster.googlepages.com/midi.html#examples">Examples</A> sections for more examples of using this method.
+Check the <a href="#examples">Examples</a> sections for more examples of using this method.
 
-<BR><BR>
-</DD><DT><STRONG></STRONG></DT><DD>
+<br><br>
+<dt><strong></strong><dd>
 
-</DD></DL>
+</dl>
 
-</DD></DL>
+</dl>
 
-<H2><A name="miditrack">midi::track</A></H2>
-<P>
+<h2><a name="miditrack">midi::track</a></h2>
+<p>
 
-</P><DL>
+<dl>
 
-<DT><A name="16"><B class="cmd">midi::track</B> ?<I class="arg">options</I>? ...</A></DT><DD>
+<dt><a name="16"><b class='cmd'>midi::track</b> ?<i class='arg'>options</i>? ...</a><dd>
 
 
 This command will create a midi track object and return a unique midi track
 id. This id should be used to manipulate the midi track later on. Known options
 are:
 
-<BR><BR>
-<DL>
+<br><br>
+<dl>
 
-<DT><STRONG>-events</STRONG> listOfEvents</DT><DD>
+<dt><strong>-events</strong> listOfEvents<dd>
 
 Specifies a list of events with associated delta-time for the midi track. An
 event with its associated delta-time is represented as a list of the delta-time
 and a list of integers representing the event. By default, no events are added 
 to a track. A delta time specifies the time to wait before processing the 
 associated event. A delta time is expressed in clock ticks. When using 
-<STRONG>ticks_per_beat</STRONG> as time division type, the duration of a note can be 
+<strong>ticks_per_beat</strong> as time division type, the duration of a note can be 
 calculated based on the specified ticks per beat. When 480 clock clicks are 
 required for a quarter note, the length in clicks of other note lengths is as 
 follows: 
 
-<P><TABLE><TBODY><TR><TD bgcolor="black">&nbsp;</TD><TD><PRE class="sample">lengthInClicks = 480.0 * 4 * length
-</PRE></TD></TR></TBODY></TABLE></P>
+<p><table><tr><td bgcolor=black>&nbsp;</td><td><pre class='sample'>
+lengthInClicks = 480.0 * 4 * length
+</pre></td></tr></table></p>
 
 Using this function, the lengths of different notes can be calculated:
 
-<P><TABLE><TBODY><TR><TD bgcolor="black">&nbsp;</TD><TD><PRE class="sample">length length in clicks
+<p><table><tr><td bgcolor=black>&nbsp;</td><td><pre class='sample'>
+length length in clicks
 ------ ----------------
 1                  1920
 1/2                 960
@@ -382,130 +393,130 @@ Using this function, the lengths of different notes can be calculated:
 1/16                120
 1/32                 60
 1/64                 30
-</PRE></TD></TR></TBODY></TABLE></P>
+</pre></td></tr></table></p>
 
-The <B class="cmd">midi::file::clicks</B> method can be used to calculate lengths in clicks 
+The <b class='cmd'>midi::file::clicks</b> method can be used to calculate lengths in clicks 
 for common note lengths.
 
-<BR><BR>
-</DD><DT><STRONG></STRONG></DT><DD>
+<br><br>
+<dt><strong></strong><dd>
 
-</DD></DL>
+</dl>
 
-</DD><DT><A name="17"><I class="arg">midiTrackId</I> <STRONG>destroy</STRONG></A></DT><DD>
+<dt><a name="17"><i class='arg'>midiTrackId</i> <strong>destroy</strong></a><dd>
 
 
 Reset and destroy a midi track object.
 
-<BR><BR>
-</DD><DT><A name="18"><I class="arg">midiTrackId</I> <STRONG>reset</STRONG></A></DT><DD>
+<br><br>
+<dt><a name="18"><i class='arg'>midiTrackId</i> <strong>reset</strong></a><dd>
 
 
 Reset a midi track object. Resetting a midi track object removes all events
 from the midi track.
 
-<BR><BR>
-</DD><DT><A name="19"><I class="arg">midiTrackId</I> <STRONG>validate</STRONG></A></DT><DD>
+<br><br>
+<dt><a name="19"><i class='arg'>midiTrackId</i> <strong>validate</strong></a><dd>
 
 
 Validates a midi track object, including the events.
 
-<BR><BR>
-</DD><DT><A name="20"><I class="arg">midiTrackId</I> <STRONG>validate_option</STRONG> <I class="arg">option</I> <I class="arg">value</I></A></DT><DD>
+<br><br>
+<dt><a name="20"><i class='arg'>midiTrackId</i> <strong>validate_option</strong> <i class='arg'>option</i> <i class='arg'>value</i></a><dd>
 
 
 Validates a midi track object option value. All options accepted by the 
-<B class="cmd">midi::track</B> command can be specified.
+<b class='cmd'>midi::track</b> command can be specified.
 
-<BR><BR>
-</DD><DT><A name="21"><I class="arg">midiTrackId</I> <STRONG>cget</STRONG> <I class="arg">option</I></A></DT><DD>
+<br><br>
+<dt><a name="21"><i class='arg'>midiTrackId</i> <strong>cget</strong> <i class='arg'>option</i></a><dd>
 
 
-Returns the current value of the configuration option given by <I class="arg">option</I>. 
-<I class="arg">Option</I> may have any of the values accepted by the 
-<B class="cmd">midi::track</B> command.
+Returns the current value of the configuration option given by <i class='arg'>option</i>. 
+<i class='arg'>Option</i> may have any of the values accepted by the 
+<b class='cmd'>midi::track</b> command.
 
-<BR><BR>
-</DD><DT><A name="22"><I class="arg">midiTrackId</I> <STRONG>configure</STRONG></A></DT><DD>
+<br><br>
+<dt><a name="22"><i class='arg'>midiTrackId</i> <strong>configure</strong></a><dd>
 
 
 Returns a list describing all of the available options. The returned list
 contains a sublist for each known option with the following elements: the
 option, the default value and the current value. Information is returned for
-all options accepted by the <B class="cmd">midi::track</B> command.
+all options accepted by the <b class='cmd'>midi::track</b> command.
 
-<BR><BR>
-</DD><DT><A name="23"><I class="arg">midiTrackId</I> <STRONG>configure</STRONG> <I class="arg">option</I></A></DT><DD>
+<br><br>
+<dt><a name="23"><i class='arg'>midiTrackId</i> <strong>configure</strong> <i class='arg'>option</i></a><dd>
 
 
-Returns list describing the named option. <I class="arg">Option</I> may have any of the
-values accepted by the <B class="cmd">midi::track</B> command. The returned list contains 3
+Returns list describing the named option. <i class='arg'>Option</i> may have any of the
+values accepted by the <b class='cmd'>midi::track</b> command. The returned list contains 3
 elements: the option, the default value and the current value.
 
-<BR><BR>
-</DD><DT><A name="24"><I class="arg">midiTrackId</I> <STRONG>configure</STRONG> <I class="arg">option value</I> ...</A></DT><DD>
+<br><br>
+<dt><a name="24"><i class='arg'>midiTrackId</i> <strong>configure</strong> <i class='arg'>option value</i> ...</a><dd>
 
 
 Modifies the given midi track option(s) to have the given value(s). The command
-returns an empty string. <I class="arg">Option</I> may have any of the values accepted by
-the <B class="cmd">midi::track</B> command.
+returns an empty string. <i class='arg'>Option</i> may have any of the values accepted by
+the <b class='cmd'>midi::track</b> command.
 
-<BR><BR>
-</DD><DT><A name="25"><I class="arg">midiTrackId</I> <STRONG>dump</STRONG></A></DT><DD>
+<br><br>
+<dt><a name="25"><i class='arg'>midiTrackId</i> <strong>dump</strong></a><dd>
 
 
 Returns a textual representation of the midi track.
 
-</DD></DL>
+</dl>
 
-<H2><A name="midievent">midi::event</A></H2>
-<P>
+<h2><a name="midievent">midi::event</a></h2>
+<p>
 
 Events are represented as a list of integers. Each integer contains the value
 of a byte in the binary midi event as stored in a midi file. The commands
 listed below make it easier to create and manipulate midi events. These 
 commands offer a configure interface. Supported events with associated options 
-can be found in the <A href="http://jos.decoster.googlepages.com/midi.html#events">Events</A> section.
+can be found in the <a href="#events">Events</a> section.
 
-</P><DL>
+<dl>
 
-<DT><A name="26"><B class="cmd">midi::event</B> <I class="arg">type</I> ?<I class="arg">options</I>? ...</A></DT><DD>
+<dt><a name="26"><b class='cmd'>midi::event</b> <i class='arg'>type</i> ?<i class='arg'>options</i>? ...</a><dd>
  
 
-Creates a new event of the specified type. Check the <A href="http://jos.decoster.googlepages.com/midi.html#events">Events</A> section
+Creates a new event of the specified type. Check the <a href="#events">Events</a> section
 for valid event types and associated options. The newly created event is
 returned as a list of integers. This list must be specified with the other
 event commands or when adding events to a track.
  
-<BR><BR>
-</DD><DT><A name="27"><B class="cmd">midi::event::reset</B> <I class="arg">intList</I></A></DT><DD>
+<br><br>
+<dt><a name="27"><b class='cmd'>midi::event::reset</b> <i class='arg'>intList</i></a><dd>
 
  
 This command returns a list of integers for an event of the same type but with
 all option values set to their defautl values.
 
-<BR><BR>
-</DD><DT><A name="28"><B class="cmd">midi::event::validate</B> <I class="arg">intList</I></A></DT><DD>
+<br><br>
+<dt><a name="28"><b class='cmd'>midi::event::validate</b> <i class='arg'>intList</i></a><dd>
  
 
 Checks if the specified list of integers is a valid event. 
 
-<BR><BR>
-</DD><DT><A name="29"><B class="cmd">midi::event::validate_option</B> <I class="arg">intList</I> ?<I class="arg">options</I>? ...</A></DT><DD>
+<br><br>
+<dt><a name="29"><b class='cmd'>midi::event::validate_option</b> <i class='arg'>intList</i> ?<i class='arg'>options</i>? ...</a><dd>
  
 
 Validates a midi event object option value. All options accepted by the 
 midi event type can be specified.
 
-<BR><BR>
-</DD><DT><A name="30"><B class="cmd">midi::event::cget</B> <I class="arg">intList</I> <I class="arg">option</I></A></DT><DD>
+<br><br>
+<dt><a name="30"><b class='cmd'>midi::event::cget</b> <i class='arg'>intList</i> <i class='arg'>option</i></a><dd>
 
 
-Returns the current value of the configuration option given by <I class="arg">option</I>. 
-<I class="arg">Option</I> may have any of the values accepted by the event type.
+Returns the current value of the configuration option given by <i class='arg'>option</i>. 
+<i class='arg'>Option</i> may have any of the values accepted by the event type.
  
-<BR><BR>
-</DD><DT><A name="31"><B class="cmd">midi::event::configure</B> <I class="arg">intList</I></A></DT><DD>
+<br><br>
+<dt><a name="31"><b class='cmd'>midi::event::configure</b> <i class='arg'>intList</i></a><dd>
 
 
 Returns a list describing all of the available options for the type of the
@@ -513,72 +524,73 @@ specified event. The returned list contains a sublist for each known option
 with the following elements: the option, the default value and the current
 value.
  
-<BR><BR>
-</DD><DT><A name="32"><B class="cmd">midi::event::configure</B> <I class="arg">intList</I> <I class="arg">option</I></A></DT><DD>
+<br><br>
+<dt><a name="32"><b class='cmd'>midi::event::configure</b> <i class='arg'>intList</i> <i class='arg'>option</i></a><dd>
 
 
-Returns list describing the named option. <I class="arg">Option</I> may have any of the
+Returns list describing the named option. <i class='arg'>Option</i> may have any of the
 values accepted by the event type. The returned list contains 3 elements: the
 option, the default value and the current value.
  
-<BR><BR>
-</DD><DT><A name="33"><B class="cmd">midi::event::configure</B> <I class="arg">intList</I> <I class="arg">option value</I> ...</A></DT><DD>
+<br><br>
+<dt><a name="33"><b class='cmd'>midi::event::configure</b> <i class='arg'>intList</i> <i class='arg'>option value</i> ...</a><dd>
 
  
 Modifies the given midi event option(s) to have the given value(s). The command
-returns an empty string. <I class="arg">Option</I> may have any of the values accepted by
+returns an empty string. <i class='arg'>Option</i> may have any of the values accepted by
 the event type.
 
-<BR><BR>
-</DD><DT><A name="34"><B class="cmd">midi::event::type</B> <I class="arg">intList</I></A></DT><DD>
+<br><br>
+<dt><a name="34"><b class='cmd'>midi::event::type</b> <i class='arg'>intList</i></a><dd>
 
  
 Return the type of the specified event. Possible return values are: 
-<STRONG>note_off</STRONG> <STRONG>note_on</STRONG> <STRONG>note_aftertouch</STRONG> <STRONG>controller</STRONG>
-<STRONG>program_change</STRONG> <STRONG>channel_aftertouch</STRONG> <STRONG>pitch_bend</STRONG> 
-<STRONG>Meta</STRONG> <STRONG>SysEx</STRONG>
+<strong>note_off</strong> <strong>note_on</strong> <strong>note_aftertouch</strong> <strong>controller</strong>
+<strong>program_change</strong> <strong>channel_aftertouch</strong> <strong>pitch_bend</strong> 
+<strong>Meta</strong> <strong>SysEx</strong>
 
-<BR><BR>
-</DD><DT><A name="35"><B class="cmd">midi::event::type_meta_event</B> <I class="arg">intList</I></A></DT><DD>
+<br><br>
+<dt><a name="35"><b class='cmd'>midi::event::type_meta_event</b> <i class='arg'>intList</i></a><dd>
 
 
 Returns meta event type. Possible return values are: 
-<STRONG>sequence_number</STRONG> <STRONG>copyright</STRONG> <STRONG>track_name</STRONG> 
-<STRONG>instrument_name</STRONG> <STRONG>lyric</STRONG> <STRONG>marker</STRONG> <STRONG>cue_point</STRONG>
-<STRONG>program_name</STRONG> <STRONG>device_name</STRONG> <STRONG>channel</STRONG> <STRONG>port</STRONG> 
-<STRONG>end_of_track</STRONG> <STRONG>tempo</STRONG> <STRONG>smpte_offset</STRONG> <STRONG>time_signature</STRONG> 
-<STRONG>key_signature</STRONG> <STRONG>sequencer_specific</STRONG> <STRONG>meta_unknown</STRONG>
+<strong>sequence_number</strong> <strong>copyright</strong> <strong>track_name</strong> 
+<strong>instrument_name</strong> <strong>lyric</strong> <strong>marker</strong> <strong>cue_point</strong>
+<strong>program_name</strong> <strong>device_name</strong> <strong>channel</strong> <strong>port</strong> 
+<strong>end_of_track</strong> <strong>tempo</strong> <strong>smpte_offset</strong> <strong>time_signature</strong> 
+<strong>key_signature</strong> <strong>sequencer_specific</strong> <strong>meta_unknown</strong>
 
-<BR><BR>
-</DD><DT><A name="36"><B class="cmd">midi::event::dump</B> <I class="arg">intList</I></A></DT><DD>
+<br><br>
+<dt><a name="36"><b class='cmd'>midi::event::dump</b> <i class='arg'>intList</i></a><dd>
 
 
 Returns a textual representation of the midi event.
 
-</DD></DL>
+</dl>
 
-<H2><A name="examples">Examples</A></H2>
-<P>
+<h2><a name="examples">Examples</a></h2>
+<p>
 
 The following example creates a midi file with 4 tracks. All events are
-generated using the <B class="cmd">midi::event</B> command.
+generated using the <b class='cmd'>midi::event</b> command.
 
-</P><P><TABLE><TBODY><TR><TD bgcolor="black">&nbsp;</TD><TD><PRE class="sample">package require midi
+<p><table><tr><td bgcolor=black>&nbsp;</td><td><pre class='sample'>
+package require midi
 
 # Create midi file and initialise time division info
 set mf [midi::file -type 1 -time_division_type ticks_per_beat -ticks_per_beat 480]
 
 # Control track
 set t1el {}
-lappend t1el [list 0 [midi::event text -value "control track"]]
+lappend t1el [list 0 [midi::event text -value &quot;control track&quot;]]
 lappend t1el [list 0 [midi::event tempo -tempo 0X7A120]] ;# 120 Beats per minute
 lappend t1el [list 0 [midi::event end_of_track]]
 set t1 [midi::track -events $t1el]
 
 # Piano track
 set t2el {}
-lappend t2el [list 0 [midi::event text -value "Piano track"]]
-lappend t2el [list 0 [midi::event program_change -channel 0 -program "Electric Piano 2"]]
+lappend t2el [list 0 [midi::event text -value &quot;Piano track&quot;]]
+lappend t2el [list 0 [midi::event program_change -channel 0 -program &quot;Electric Piano 2&quot;]]
 
 lappend t2el [list 0                [midi::event note_on  -channel 0 -note C4 -velocity 127]]
 lappend t2el [list [$mf clicks 1/1] [midi::event note_off -channel 0 -note C4 -velocity 127]]
@@ -606,8 +618,8 @@ set t2 [midi::track -events $t2el]
 
 # Bass track
 set t3el {}
-lappend t3el [list 0 [midi::event text -value "Bass track"]]
-lappend t3el [list 0 [midi::event program_change -channel 1 -program "Electric Bass(pick)"]]
+lappend t3el [list 0 [midi::event text -value &quot;Bass track&quot;]]
+lappend t3el [list 0 [midi::event program_change -channel 1 -program &quot;Electric Bass(pick)&quot;]]
 
 lappend t3el [list 0                [midi::event note_on  -channel 1 -note C2 -velocity 127]]
 lappend t3el [list [$mf clicks 1/4] [midi::event note_off -channel 1 -note C2 -velocity 127]]
@@ -651,31 +663,31 @@ set t3 [midi::track -events $t3el]
 
 # Drum track
 set t4el {}
-lappend t4el [list 0 [midi::event text -value "Drum track"]]
+lappend t4el [list 0 [midi::event text -value &quot;Drum track&quot;]]
 
-lappend t4el [list 0                [midi::event note_on  -channel 9 -note "closed hi-hat"      -velocity 127]]
-lappend t4el [list 0                [midi::event note_on  -channel 9 -note "acoustic bass drum" -velocity 127]]
-lappend t4el [list [$mf clicks 1/4] [midi::event note_off -channel 9 -note "closed hi-hat"      -velocity 127]]
-lappend t4el [list 0                [midi::event note_on  -channel 9 -note "closed hi-hat"      -velocity 127]]
-lappend t4el [list [$mf clicks 1/4] [midi::event note_off -channel 9 -note "closed hi-hat"      -velocity 127]]
-lappend t4el [list 0                [midi::event note_on  -channel 9 -note "closed hi-hat"      -velocity 127]]
-lappend t4el [list 0                [midi::event note_on  -channel 9 -note "acoustic snare"     -velocity 127]]
-lappend t4el [list [$mf clicks 1/4] [midi::event note_off -channel 9 -note "closed hi-hat"      -velocity 127]]
-lappend t4el [list 0                [midi::event note_on  -channel 9 -note "closed hi-hat"      -velocity 127]]
+lappend t4el [list 0                [midi::event note_on  -channel 9 -note &quot;closed hi-hat&quot;      -velocity 127]]
+lappend t4el [list 0                [midi::event note_on  -channel 9 -note &quot;acoustic bass drum&quot; -velocity 127]]
+lappend t4el [list [$mf clicks 1/4] [midi::event note_off -channel 9 -note &quot;closed hi-hat&quot;      -velocity 127]]
+lappend t4el [list 0                [midi::event note_on  -channel 9 -note &quot;closed hi-hat&quot;      -velocity 127]]
+lappend t4el [list [$mf clicks 1/4] [midi::event note_off -channel 9 -note &quot;closed hi-hat&quot;      -velocity 127]]
+lappend t4el [list 0                [midi::event note_on  -channel 9 -note &quot;closed hi-hat&quot;      -velocity 127]]
+lappend t4el [list 0                [midi::event note_on  -channel 9 -note &quot;acoustic snare&quot;     -velocity 127]]
+lappend t4el [list [$mf clicks 1/4] [midi::event note_off -channel 9 -note &quot;closed hi-hat&quot;      -velocity 127]]
+lappend t4el [list 0                [midi::event note_on  -channel 9 -note &quot;closed hi-hat&quot;      -velocity 127]]
 
 for { set i 0 } { $i &lt; 4 } { incr i } {
-    lappend t4el [list [$mf clicks 1/4] [midi::event note_off -channel 9 -note "closed hi-hat"      -velocity 127]]
-    lappend t4el [list 0                [midi::event note_on  -channel 9 -note "closed hi-hat"      -velocity 127]]
-    lappend t4el [list 0                [midi::event note_off -channel 9 -note "acoustic bass drum" -velocity 127]]
-    lappend t4el [list 0                [midi::event note_on  -channel 9 -note "acoustic bass drum" -velocity 127]]
-    lappend t4el [list [$mf clicks 1/4] [midi::event note_off -channel 9 -note "closed hi-hat"      -velocity 127]]
-    lappend t4el [list 0                [midi::event note_on  -channel 9 -note "closed hi-hat"      -velocity 127]]
-    lappend t4el [list [$mf clicks 1/4] [midi::event note_off -channel 9 -note "closed hi-hat"      -velocity 127]]
-    lappend t4el [list 0                [midi::event note_on  -channel 9 -note "closed hi-hat"      -velocity 127]]
-    lappend t4el [list 0                [midi::event note_off -channel 9 -note "acoustic snare"     -velocity 127]]
-    lappend t4el [list 0                [midi::event note_on  -channel 9 -note "acoustic snare"     -velocity 127]]
-    lappend t4el [list [$mf clicks 1/4] [midi::event note_off -channel 9 -note "closed hi-hat"      -velocity 127]]
-    lappend t4el [list 0                [midi::event note_on  -channel 9 -note "closed hi-hat"      -velocity 127]]
+    lappend t4el [list [$mf clicks 1/4] [midi::event note_off -channel 9 -note &quot;closed hi-hat&quot;      -velocity 127]]
+    lappend t4el [list 0                [midi::event note_on  -channel 9 -note &quot;closed hi-hat&quot;      -velocity 127]]
+    lappend t4el [list 0                [midi::event note_off -channel 9 -note &quot;acoustic bass drum&quot; -velocity 127]]
+    lappend t4el [list 0                [midi::event note_on  -channel 9 -note &quot;acoustic bass drum&quot; -velocity 127]]
+    lappend t4el [list [$mf clicks 1/4] [midi::event note_off -channel 9 -note &quot;closed hi-hat&quot;      -velocity 127]]
+    lappend t4el [list 0                [midi::event note_on  -channel 9 -note &quot;closed hi-hat&quot;      -velocity 127]]
+    lappend t4el [list [$mf clicks 1/4] [midi::event note_off -channel 9 -note &quot;closed hi-hat&quot;      -velocity 127]]
+    lappend t4el [list 0                [midi::event note_on  -channel 9 -note &quot;closed hi-hat&quot;      -velocity 127]]
+    lappend t4el [list 0                [midi::event note_off -channel 9 -note &quot;acoustic snare&quot;     -velocity 127]]
+    lappend t4el [list 0                [midi::event note_on  -channel 9 -note &quot;acoustic snare&quot;     -velocity 127]]
+    lappend t4el [list [$mf clicks 1/4] [midi::event note_off -channel 9 -note &quot;closed hi-hat&quot;      -velocity 127]]
+    lappend t4el [list 0                [midi::event note_on  -channel 9 -note &quot;closed hi-hat&quot;      -velocity 127]]
 }
 
 lappend t4el [list 0 [midi::event end_of_track]]
@@ -687,13 +699,14 @@ $mf write test.mid
 $mf destroy
 
 exit
-</PRE></TD></TR></TBODY></TABLE></P>
+</pre></td></tr></table></p>
 
-The following examples uses the <B class="cmd">midi::file::measure</B> method to generate the
+The following examples uses the <b class='cmd'>midi::file::measure</b> method to generate the
 same note-on and note-off events as in the example above. This example requires
 Tcl 8.5 because it uses the {*} operator.
 
-<P><TABLE><TBODY><TR><TD bgcolor="black">&nbsp;</TD><TD><PRE class="sample">lappend auto_path ..
+<p><table><tr><td bgcolor=black>&nbsp;</td><td><pre class='sample'>
+lappend auto_path ..
 package require Tcl 8.5
 package require midi
 
@@ -702,7 +715,7 @@ set mf [midi::file -type 1 -time_division_type ticks_per_beat -ticks_per_beat 48
 
 # Control track
 set t1el {}
-lappend t1el [list 0 [midi::event text -value "control track"]]
+lappend t1el [list 0 [midi::event text -value &quot;control track&quot;]]
 lappend t1el [list 0 [midi::event tempo -tempo 0X7A120]] ;# 120 Beats per minute
 lappend t1el [list 0 [midi::event end_of_track]]
 
@@ -710,8 +723,8 @@ set t1 [midi::track -events $t1el]
 
 # Piano track
 set at2el {}
-lappend at2el [list 0 [midi::event text -value "Piano track"]]
-lappend at2el [list 0 [midi::event program_change -channel 0 -program "Electric Piano 2"]]
+lappend at2el [list 0 [midi::event text -value &quot;Piano track&quot;]]
+lappend at2el [list 0 [midi::event program_change -channel 0 -program &quot;Electric Piano 2&quot;]]
 lappend at2el {*}[$mf measure -channel 0 -events {{1/1 C4} {1/1 E4} {1/1 G4} {1/1 C5} {1/1 {C4 E4 G4 C5}}}]
 lappend at2el [list 0 [midi::event end_of_track]]
 
@@ -719,8 +732,8 @@ set t2 [midi::track -events $at2el]
 
 # Bass track
 set at3el {}
-lappend at3el [list 0 [midi::event text -value "Bass track"]]
-lappend at3el [list 0 [midi::event program_change -channel 1 -program "Electric Bass(pick)"]]
+lappend at3el [list 0 [midi::event text -value &quot;Bass track&quot;]]
+lappend at3el [list 0 [midi::event program_change -channel 1 -program &quot;Electric Bass(pick)&quot;]]
 lappend at3el {*}[$mf measure -channel 1 -events {{1/4 C2} {1/4 D2} {1/4 E2} {1/4 F2}}]
 lappend at3el {*}[$mf measure -channel 1 -events {{1/4 E2 60} {1/4 F2} {1/4 G2} {1/4 A2}}]
 lappend at3el {*}[$mf measure -channel 1 -events {{1/4 G2} {1/4 A2} {1/4 B2} {1/4  C3}}]
@@ -732,13 +745,13 @@ set t3 [midi::track -events $at3el]
 
 # Drum track
 set at4el {}
-lappend at4el [list 0 [midi::event text -value "Drum track"]]
+lappend at4el [list 0 [midi::event text -value &quot;Drum track&quot;]]
 for { set i 0 } { $i &lt; 5 } { incr i } {
     lappend at4el {*}[$mf measure -channel 9 -events {
-        {1/4 {"closed hi-hat" "acoustic bass drum"}} \
-	{1/4 {"closed hi-hat"}} \
-        {1/4 {"closed hi-hat" "acoustic snare"}} \
-        {1/4 {"closed hi-hat"}} \
+        {1/4 {&quot;closed hi-hat&quot; &quot;acoustic bass drum&quot;}} \
+	{1/4 {&quot;closed hi-hat&quot;}} \
+        {1/4 {&quot;closed hi-hat&quot; &quot;acoustic snare&quot;}} \
+        {1/4 {&quot;closed hi-hat&quot;}} \
 	}]
 }
 lappend at4el [list 0 [midi::event end_of_track]]
@@ -751,17 +764,18 @@ $mf write test2.mid
 $mf destroy
 
 exit
-</PRE></TD></TR></TBODY></TABLE></P>
+</pre></td></tr></table></p>
 
-This example shows how the rests and the <B class="cmd">midi::merge</B> command can be used
+This example shows how the rests and the <b class='cmd'>midi::merge</b> command can be used
 to generate an event-list for the first track of the example above:
 
-<P><TABLE><TBODY><TR><TD bgcolor="black">&nbsp;</TD><TD><PRE class="sample">set t1 [midi::track -events $t1el]
+<p><table><tr><td bgcolor=black>&nbsp;</td><td><pre class='sample'>
+set t1 [midi::track -events $t1el]
 
 # Piano track
 set at2el {}
-lappend at2el [list 0 [midi::event text -value "Piano track"]]
-lappend at2el [list 0 [midi::event program_change -channel 0 -program "Electric Piano 2"]]
+lappend at2el [list 0 [midi::event text -value &quot;Piano track&quot;]]
+lappend at2el [list 0 [midi::event program_change -channel 0 -program &quot;Electric Piano 2&quot;]]
 
 
 set te1 [$mf measure -channel 0 -events {{1/1 C4} {1/1 r}  {1/1 G4} {1/1 R}  {1/1 {r  E4 r  C5}}}]
@@ -771,12 +785,13 @@ lappend at2el {*}[midi::merge $te1 $te2]
 lappend at2el [list 0 [midi::event end_of_track]]
 
 set t2 [midi::track -events $at2el]
-</PRE></TD></TR></TBODY></TABLE></P>
+</pre></td></tr></table></p>
 
 This example reads the midi file specified on the command line and dumps the
 contents to standard output:
 
-<P><TABLE><TBODY><TR><TD bgcolor="black">&nbsp;</TD><TD><PRE class="sample">package require midi
+<p><table><tr><td bgcolor=black>&nbsp;</td><td><pre class='sample'>
+package require midi
 
 set mf [midi::file]
 $mf read [lindex $argv 0]
@@ -784,11 +799,12 @@ puts [$mf dump]
 $mf destroy
 
 exit
-</PRE></TD></TR></TBODY></TABLE></P>
+</pre></td></tr></table></p>
 
 The result of the dump command looks like this:
 
-<P><TABLE><TBODY><TR><TD bgcolor="black">&nbsp;</TD><TD><PRE class="sample">MThd
+<p><table><tr><td bgcolor=black>&nbsp;</td><td><pre class='sample'>
+MThd
   header size: 6
   format type: 1
   number of tracks: 4
@@ -902,361 +918,361 @@ MTrk
               0          8640 note_on channel 0x09, note 0x26, velocity 0x7F
             480          9120 note_on channel 0x09, note 0x2A, velocity 0x7F
               0          9120 end_of_track
-</PRE></TD></TR></TBODY></TABLE></P>
+</pre></td></tr></table></p>
 
-<H2><A name="events">Events</A></H2>
-<P>
+<h2><a name="events">Events</a></h2>
+<p>
 
-</P><DL>
+<dl>
 
-<DT>sequence_number</DT><DD> Event containing the sequence number of the track in
+<dt>sequence_number<dd> Event containing the sequence number of the track in
  which this event is placed.
 
-<BR><BR>
-<DL>
-<DT><STRONG>-value</STRONG> integer</DT><DD> The sequence number of the track. The default value
-is <STRONG>0</STRONG>. 
-<BR><BR>
-</DD><DT><STRONG></STRONG></DT><DD>
-</DD></DL>
+<br><br>
+<dl>
+<dt><strong>-value</strong> integer<dd> The sequence number of the track. The default value
+is <strong>0</strong>. 
+<br><br>
+<dt><strong></strong><dd>
+</dl>
 
-</DD><DT>text</DT><DD> Text describing the track in which this event is placed.
+<dt>text<dd> Text describing the track in which this event is placed.
 
-<BR><BR>
-<DL>
-<DT><STRONG>-value</STRONG> string</DT><DD> File or track description. The default value is an 
+<br><br>
+<dl>
+<dt><strong>-value</strong> string<dd> File or track description. The default value is an 
 empty string.
-<BR><BR>
-</DD><DT><STRONG></STRONG></DT><DD>
-</DD></DL>
+<br><br>
+<dt><strong></strong><dd>
+</dl>
 
-</DD><DT>copyright</DT><DD> Midi file copyright notice.
+<dt>copyright<dd> Midi file copyright notice.
 
-<BR><BR>
-<DL>
-<DT><STRONG>-value</STRONG> string</DT><DD> Copyright text. The default value is an empty 
+<br><br>
+<dl>
+<dt><strong>-value</strong> string<dd> Copyright text. The default value is an empty 
 string.
-<BR><BR>
-</DD><DT><STRONG></STRONG></DT><DD>
-</DD></DL>
+<br><br>
+<dt><strong></strong><dd>
+</dl>
 
-</DD><DT>track_name</DT><DD> Name of track.
+<dt>track_name<dd> Name of track.
 
-<BR><BR>
-<DL>
-<DT><STRONG>-value</STRONG> string</DT><DD> Track name. The default value is an empty string.
-<BR><BR>
-</DD><DT><STRONG></STRONG></DT><DD>
-</DD></DL>
+<br><br>
+<dl>
+<dt><strong>-value</strong> string<dd> Track name. The default value is an empty string.
+<br><br>
+<dt><strong></strong><dd>
+</dl>
 
-</DD><DT>instrument_name</DT><DD> Name of instrument used in track.
+<dt>instrument_name<dd> Name of instrument used in track.
 
-<BR><BR>
-<DL>
-<DT><STRONG>-value</STRONG> string</DT><DD> Instrument name. The default value is an empty string.
-<BR><BR>
-</DD><DT><STRONG></STRONG></DT><DD>
-</DD></DL>
+<br><br>
+<dl>
+<dt><strong>-value</strong> string<dd> Instrument name. The default value is an empty string.
+<br><br>
+<dt><strong></strong><dd>
+</dl>
 
-</DD><DT>lyric</DT><DD> Lyric to be sung at the point this event is placed. This can 
+<dt>lyric<dd> Lyric to be sung at the point this event is placed. This can 
 be a word or syllable.
 
-<BR><BR>
-<DL>
-<DT><STRONG>-value</STRONG> string</DT><DD> Lyric. The default value is an empty string.
-<BR><BR>
-</DD><DT><STRONG></STRONG></DT><DD>
-</DD></DL>
+<br><br>
+<dl>
+<dt><strong>-value</strong> string<dd> Lyric. The default value is an empty string.
+<br><br>
+<dt><strong></strong><dd>
+</dl>
 
-</DD><DT>marker</DT><DD> Marker for specific point in track like rehearsal letter, 
+<dt>marker<dd> Marker for specific point in track like rehearsal letter, 
 section name, loop start or loop end.
 
-<BR><BR>
-<DL>
-<DT><STRONG>-value</STRONG> string</DT><DD> Marker text. The default value is an empty string.
-<BR><BR>
-</DD><DT><STRONG></STRONG></DT><DD>
-</DD></DL>
+<br><br>
+<dl>
+<dt><strong>-value</strong> string<dd> Marker text. The default value is an empty string.
+<br><br>
+<dt><strong></strong><dd>
+</dl>
 
-</DD><DT>cue_point</DT><DD> Description of something which happens at the point this 
+<dt>cue_point<dd> Description of something which happens at the point this 
 event is placed.
 
-<BR><BR>
-<DL>
-<DT><STRONG>-value</STRONG> string</DT><DD> Descriptive text. The default value is an empty string.
-<BR><BR>
-</DD><DT><STRONG></STRONG></DT><DD>
-</DD></DL>
+<br><br>
+<dl>
+<dt><strong>-value</strong> string<dd> Descriptive text. The default value is an empty string.
+<br><br>
+<dt><strong></strong><dd>
+</dl>
 
-</DD><DT>program_name</DT><DD> Name of the program used in the events following.
+<dt>program_name<dd> Name of the program used in the events following.
 
-<BR><BR>
-<DL>
-<DT><STRONG>-value</STRONG> string</DT><DD> Program name. The default value is an empty string.
-<BR><BR>
-</DD><DT><STRONG></STRONG></DT><DD>
-</DD></DL>
+<br><br>
+<dl>
+<dt><strong>-value</strong> string<dd> Program name. The default value is an empty string.
+<br><br>
+<dt><strong></strong><dd>
+</dl>
 
-</DD><DT>device_name</DT><DD> Name of the midi device (port) where the track is 
+<dt>device_name<dd> Name of the midi device (port) where the track is 
 routed.
 
-<BR><BR>
-<DL>
-<DT><STRONG>-value</STRONG> string</DT><DD> Device name. The default value is an empty string.
-<BR><BR>
-</DD><DT><STRONG></STRONG></DT><DD>
-</DD></DL>
+<br><br>
+<dl>
+<dt><strong>-value</strong> string<dd> Device name. The default value is an empty string.
+<br><br>
+<dt><strong></strong><dd>
+</dl>
 
-</DD><DT>channel</DT><DD> Specifies the channel to which following meta and system 
+<dt>channel<dd> Specifies the channel to which following meta and system 
 exclusive must be sent. (DEPRECATED)
 
-<BR><BR>
-<DL>
-<DT><STRONG>-channel</STRONG> integer</DT><DD> Channel number. The default value is 0. Check the 
-<A href="http://jos.decoster.googlepages.com/midi.html#channels">Channels</A> section for valid channel numbers.
-<BR><BR>
-</DD><DT><STRONG></STRONG></DT><DD>
-</DD></DL>
+<br><br>
+<dl>
+<dt><strong>-channel</strong> integer<dd> Channel number. The default value is 0. Check the 
+<a href="#channels">Channels</a> section for valid channel numbers.
+<br><br>
+<dt><strong></strong><dd>
+</dl>
 
-</DD><DT>port</DT><DD> Midi port to which following midi events must be sent. 
+<dt>port<dd> Midi port to which following midi events must be sent. 
 (DEPRECATED)
 
-<BR><BR>
-<DL>
-<DT><STRONG>-port</STRONG></DT><DD> Port number. The default value is 0.
-<BR><BR>
-</DD><DT><STRONG></STRONG></DT><DD>
-</DD></DL>
+<br><br>
+<dl>
+<dt><strong>-port</strong><dd> Port number. The default value is 0.
+<br><br>
+<dt><strong></strong><dd>
+</dl>
 
-</DD><DT>end_of_track</DT><DD> Marks the end of a track. Must be placed at the end of 
+<dt>end_of_track<dd> Marks the end of a track. Must be placed at the end of 
 every track. 
 
-<BR><BR>
-</DD><DT>tempo</DT><DD> Used to indicate tempo changes. 
+<br><br>
+<dt>tempo<dd> Used to indicate tempo changes. 
 
-<BR><BR>
-<DL>
-<DT><STRONG>-tempo</STRONG> integer</DT><DD> Tempo expressed in micro seconds per quarter note. The
+<br><br>
+<dl>
+<dt><strong>-tempo</strong> integer<dd> Tempo expressed in micro seconds per quarter note. The
 default value is 0x07A120 which corresponds to 120 BPM.
-<BR><BR>
-</DD><DT><STRONG></STRONG></DT><DD>
-</DD></DL>
+<br><br>
+<dt><strong></strong><dd>
+</dl>
 
-</DD><DT>smpte_offset</DT><DD> Specifies the start time of the track. 
+<dt>smpte_offset<dd> Specifies the start time of the track. 
 
-<BR><BR>
-<DL>
-<DT><STRONG>-hours</STRONG> integer</DT><DD> Hours part of start time. Default value is 0.
-<BR><BR>
-</DD><DT><STRONG>-minutes</STRONG> integer</DT><DD> Minutes part of start time. Default value is 0.
-<BR><BR>
-</DD><DT><STRONG>-seconds</STRONG> integer</DT><DD> Seconds part of start time. Default value is 0.
-<BR><BR>
-</DD><DT><STRONG>-frames</STRONG> integer</DT><DD> Frame count part of start time. Default value is 0.
-<BR><BR>
-</DD><DT><STRONG>-framefractions</STRONG> integer</DT><DD> Frame fraction part of start time. Default 
+<br><br>
+<dl>
+<dt><strong>-hours</strong> integer<dd> Hours part of start time. Default value is 0.
+<br><br>
+<dt><strong>-minutes</strong> integer<dd> Minutes part of start time. Default value is 0.
+<br><br>
+<dt><strong>-seconds</strong> integer<dd> Seconds part of start time. Default value is 0.
+<br><br>
+<dt><strong>-frames</strong> integer<dd> Frame count part of start time. Default value is 0.
+<br><br>
+<dt><strong>-framefractions</strong> integer<dd> Frame fraction part of start time. Default 
 value is 0.
-<BR><BR>
-</DD><DT><STRONG></STRONG></DT><DD>
-</DD></DL>
+<br><br>
+<dt><strong></strong><dd>
+</dl>
 
-</DD><DT>time_signature</DT><DD> Used to specify the time signature.
+<dt>time_signature<dd> Used to specify the time signature.
 
-<BR><BR>
-<DL>
-<DT><STRONG>-numerator</STRONG> integer</DT><DD> Numerator part of time signature. Default value is
+<br><br>
+<dl>
+<dt><strong>-numerator</strong> integer<dd> Numerator part of time signature. Default value is
 0.
-<BR><BR>
-</DD><DT><STRONG>-denominator</STRONG> integer</DT><DD> Denominator part of the time signature. This 
+<br><br>
+<dt><strong>-denominator</strong> integer<dd> Denominator part of the time signature. This 
 values must be an integer power of 2 (2, 4, 8). Default value is 1.
-<BR><BR>
-</DD><DT><STRONG>-clocks_ticks_between_metronome_clicks</STRONG> integer</DT><DD> The number of midi 
+<br><br>
+<dt><strong>-clocks_ticks_between_metronome_clicks</strong> integer<dd> The number of midi 
 clock cliks in one metronome click. Default value is 0. 
-<BR><BR>
-</DD><DT><STRONG>-notated_32nd_notes_in_quarter_note</STRONG> integer</DT><DD> The number of notated 
+<br><br>
+<dt><strong>-notated_32nd_notes_in_quarter_note</strong> integer<dd> The number of notated 
 32nd notes in a midi quarter note. Default value is 0.
-<BR><BR>
-</DD><DT><STRONG></STRONG></DT><DD>
-</DD></DL>
+<br><br>
+<dt><strong></strong><dd>
+</dl>
 
-</DD><DT>key_signature</DT><DD> Sets the key signature.
+<dt>key_signature<dd> Sets the key signature.
 
-<BR><BR>
-<DL>
-<DT><STRONG>-number_of_modifications</STRONG> integer</DT><DD> The number of modifications. 
+<br><br>
+<dl>
+<dt><strong>-number_of_modifications</strong> integer<dd> The number of modifications. 
 Positive  numbers (1..7) for sharps, negative numbers (-1..-7) for flats. 
 Default value is 0.
-<BR><BR>
-</DD><DT><STRONG>-scale</STRONG> integer</DT><DD> Set to 0 for major scale or to 1 for minor scale. 
+<br><br>
+<dt><strong>-scale</strong> integer<dd> Set to 0 for major scale or to 1 for minor scale. 
 Default values is 0.
-<BR><BR>
-</DD><DT><STRONG></STRONG></DT><DD>
-</DD></DL>
+<br><br>
+<dt><strong></strong><dd>
+</dl>
 
-</DD><DT>sequencer_specific</DT><DD> Used to send data to a sequencer. These events 
+<dt>sequencer_specific<dd> Used to send data to a sequencer. These events 
 are not interpreted by this packages. 
 
-<BR><BR>
-<DL>
-<DT><STRONG>-data</STRONG> listOfIntegers</DT><DD> The data to be sent as a list of integers 
+<br><br>
+<dl>
+<dt><strong>-data</strong> listOfIntegers<dd> The data to be sent as a list of integers 
 without the size of the data. Default value is an empty list. 
-<BR><BR>
-</DD><DT><STRONG></STRONG></DT><DD>
-</DD></DL>
+<br><br>
+<dt><strong></strong><dd>
+</dl>
 
-</DD><DT>meta_unknown</DT><DD> Meta event. These events are not interpreted by this 
+<dt>meta_unknown<dd> Meta event. These events are not interpreted by this 
 packages. 
 
-<BR><BR>
-<DL>
-<DT><STRONG>-meta_unknown_event_type</STRONG> integer</DT><DD> Meta event type. Default values is 
+<br><br>
+<dl>
+<dt><strong>-meta_unknown_event_type</strong> integer<dd> Meta event type. Default values is 
 0.
-<BR><BR>
-</DD><DT><STRONG>-data</STRONG> listOfIntegers</DT><DD> Data associated with the meta event specified as
+<br><br>
+<dt><strong>-data</strong> listOfIntegers<dd> Data associated with the meta event specified as
 a list of integers without the size of the data. Default value is an empty 
 list.
-<BR><BR>
-</DD><DT><STRONG></STRONG></DT><DD>
-</DD></DL>
+<br><br>
+<dt><strong></strong><dd>
+</dl>
 
-</DD><DT>SysEx</DT><DD> System exclusive event. These events are not interpreted by 
+<dt>SysEx<dd> System exclusive event. These events are not interpreted by 
 this packages. 
 
-<BR><BR>
-<DL>
-<DT><STRONG>-sysex_event_type</STRONG></DT><DD> System exclusive event type. Default values is 0.
-<BR><BR>
-</DD><DT><STRONG>-data</STRONG></DT><DD> Data associated with the system exclusive event specified as
+<br><br>
+<dl>
+<dt><strong>-sysex_event_type</strong><dd> System exclusive event type. Default values is 0.
+<br><br>
+<dt><strong>-data</strong><dd> Data associated with the system exclusive event specified as
 a list of integers without the size of the data. Default value is an empty 
 list.
-<BR><BR>
-</DD><DT><STRONG></STRONG></DT><DD>
-</DD></DL>
+<br><br>
+<dt><strong></strong><dd>
+</dl>
 
-</DD><DT>note_on</DT><DD> Play a note.
+<dt>note_on<dd> Play a note.
 
-<BR><BR>
-<DL>
-<DT><STRONG>-channel</STRONG> integer</DT><DD> Channel on which to play the note. Check the 
-<A href="http://jos.decoster.googlepages.com/midi.html#channels">Channels</A> section for valid channel numbers. Default value is 0.
-<BR><BR>
-</DD><DT><STRONG>-note</STRONG> note</DT><DD> Note to play. Check the <A href="http://jos.decoster.googlepages.com/midi.html#notes">Notes</A> section for 
+<br><br>
+<dl>
+<dt><strong>-channel</strong> integer<dd> Channel on which to play the note. Check the 
+<a href="#channels">Channels</a> section for valid channel numbers. Default value is 0.
+<br><br>
+<dt><strong>-note</strong> note<dd> Note to play. Check the <a href="#notes">Notes</a> section for 
 valid note numbers and valid note names. Default value is 0. 
-<BR><BR>
-</DD><DT><STRONG>-velocity</STRONG> integer</DT><DD> Velocity (volume) with which to hit the note. Must 
+<br><br>
+<dt><strong>-velocity</strong> integer<dd> Velocity (volume) with which to hit the note. Must 
 be an integer in the range 0..127. Default value is 0.
-<BR><BR>
-</DD><DT><STRONG></STRONG></DT><DD>
-</DD></DL>
+<br><br>
+<dt><strong></strong><dd>
+</dl>
 
-</DD><DT>note_off</DT><DD> Stop a note.
+<dt>note_off<dd> Stop a note.
 
-<BR><BR>
-<DL>
-<DT><STRONG>-channel</STRONG> integer</DT><DD> Channel on which to stop the note. Check the 
-<A href="http://jos.decoster.googlepages.com/midi.html#channels">Channels</A> section for valid channel numbers. Default value is 0.
-<BR><BR>
-</DD><DT><STRONG>-note</STRONG> note</DT><DD> Note to stop. Check the <A href="http://jos.decoster.googlepages.com/midi.html#notes">Notes</A> section for 
+<br><br>
+<dl>
+<dt><strong>-channel</strong> integer<dd> Channel on which to stop the note. Check the 
+<a href="#channels">Channels</a> section for valid channel numbers. Default value is 0.
+<br><br>
+<dt><strong>-note</strong> note<dd> Note to stop. Check the <a href="#notes">Notes</a> section for 
 valid note numbers and valid note names. Default value is 0. 
-<BR><BR>
-</DD><DT><STRONG>-velocity</STRONG> integer</DT><DD> Velocity (volume) with which to stop the note. Must
+<br><br>
+<dt><strong>-velocity</strong> integer<dd> Velocity (volume) with which to stop the note. Must
 be an integer in the range 0..127. Default value is 0.
-<BR><BR>
-</DD><DT><STRONG></STRONG></DT><DD>
-</DD></DL>
+<br><br>
+<dt><strong></strong><dd>
+</dl>
 
-</DD><DT>note_aftertouch</DT><DD> Change the pressure with which the note is held 
+<dt>note_aftertouch<dd> Change the pressure with which the note is held 
 down. This can be used to control effects (e.g. a vibrato).
 
-<BR><BR>
-<DL>
-<DT><STRONG>-channel</STRONG> integer</DT><DD> Channel on which to apply the aftertouch. Check the 
-<A href="http://jos.decoster.googlepages.com/midi.html#channels">Channels</A> section for valid channel numbers. Default value is 0.
-<BR><BR>
-</DD><DT><STRONG>-note</STRONG> note</DT><DD> Note to apply aftertouch to. Check the <A href="http://jos.decoster.googlepages.com/midi.html#notes">Notes</A> 
+<br><br>
+<dl>
+<dt><strong>-channel</strong> integer<dd> Channel on which to apply the aftertouch. Check the 
+<a href="#channels">Channels</a> section for valid channel numbers. Default value is 0.
+<br><br>
+<dt><strong>-note</strong> note<dd> Note to apply aftertouch to. Check the <a href="#notes">Notes</a> 
 section for  valid note numbers and valid note names. Default value is 0. 
-<BR><BR>
-</DD><DT><STRONG>-amount</STRONG> integer</DT><DD> Amount of aftertouch to apply to the note. Must
+<br><br>
+<dt><strong>-amount</strong> integer<dd> Amount of aftertouch to apply to the note. Must
 be an integer in the range 0..127. Default value is 0.
-<BR><BR>
-</DD><DT><STRONG></STRONG></DT><DD>
-</DD></DL>
+<br><br>
+<dt><strong></strong><dd>
+</dl>
 
-</DD><DT>controller</DT><DD> Used to set the value of a controller (e.g. modulation 
+<dt>controller<dd> Used to set the value of a controller (e.g. modulation 
 wheel).
 
-<BR><BR>
-<DL>
-<DT><STRONG>-channel</STRONG> integer</DT><DD> Channel on which controller will have effect. Check 
-the <A href="http://jos.decoster.googlepages.com/midi.html#channels">Channels</A> section for valid channel numbers. Default value is 0. 
-<BR><BR>
-</DD><DT><STRONG>-controller</STRONG> controller</DT><DD> Controller name or number. Check the 
-<A href="http://jos.decoster.googlepages.com/midi.html#controllers">Controllers</A> section for valid controller names and numbers. Default 
+<br><br>
+<dl>
+<dt><strong>-channel</strong> integer<dd> Channel on which controller will have effect. Check 
+the <a href="#channels">Channels</a> section for valid channel numbers. Default value is 0. 
+<br><br>
+<dt><strong>-controller</strong> controller<dd> Controller name or number. Check the 
+<a href="#controllers">Controllers</a> section for valid controller names and numbers. Default 
 value is 0.
-<BR><BR>
-</DD><DT><STRONG>-value</STRONG> integer</DT><DD> Value to be set for the specified controller. Must
+<br><br>
+<dt><strong>-value</strong> integer<dd> Value to be set for the specified controller. Must
 be an integer in the range 0..127. Default value is 0.
-<BR><BR>
-</DD><DT><STRONG></STRONG></DT><DD>
-</DD></DL>
+<br><br>
+<dt><strong></strong><dd>
+</dl>
 
-</DD><DT>program_change</DT><DD> change the program (patch, instrument) for a channel.
+<dt>program_change<dd> change the program (patch, instrument) for a channel.
 
-<BR><BR>
-<DL>
-<DT><STRONG>-channel</STRONG> integer</DT><DD> Channel on which program change will have effect. 
-Check  the <A href="http://jos.decoster.googlepages.com/midi.html#channels">Channels</A> section for valid channel numbers. Default value 
+<br><br>
+<dl>
+<dt><strong>-channel</strong> integer<dd> Channel on which program change will have effect. 
+Check  the <a href="#channels">Channels</a> section for valid channel numbers. Default value 
 is 0. 
-<BR><BR>
-</DD><DT><STRONG>-program</STRONG> program</DT><DD> Program name or number. Check the 
-<A href="http://jos.decoster.googlepages.com/midi.html#programs">Programs</A> section for valid program names and numbers. Default value 
+<br><br>
+<dt><strong>-program</strong> program<dd> Program name or number. Check the 
+<a href="#programs">Programs</a> section for valid program names and numbers. Default value 
 is 0.
-<BR><BR>
-</DD><DT><STRONG></STRONG></DT><DD>
-</DD></DL>
+<br><br>
+<dt><strong></strong><dd>
+</dl>
 
-</DD><DT>channel_aftertouch</DT><DD> Change the pressure with which all notes in the 
+<dt>channel_aftertouch<dd> Change the pressure with which all notes in the 
 specified channel are held down. This can be used to control effects (e.g. a 
 vibrato).
 
-<BR><BR>
-<DL>
-<DT><STRONG>-channel</STRONG> integer</DT><DD> Channel on which to apply the aftertouch. Check the 
-<A href="http://jos.decoster.googlepages.com/midi.html#channels">Channels</A> section for valid channel numbers. Default value is 0.
-<BR><BR>
-</DD><DT><STRONG>-amount</STRONG> integer</DT><DD> Amount of aftertouch to apply to the channel. Must
+<br><br>
+<dl>
+<dt><strong>-channel</strong> integer<dd> Channel on which to apply the aftertouch. Check the 
+<a href="#channels">Channels</a> section for valid channel numbers. Default value is 0.
+<br><br>
+<dt><strong>-amount</strong> integer<dd> Amount of aftertouch to apply to the channel. Must
 be an integer in the range 0..127. Default value is 0.
-<BR><BR>
-</DD><DT><STRONG></STRONG></DT><DD>
-</DD></DL>
+<br><br>
+<dt><strong></strong><dd>
+</dl>
 
 
-</DD><DT>pitch_bend</DT><DD> Used to change the pitch of all notes in a channel.
+<dt>pitch_bend<dd> Used to change the pitch of all notes in a channel.
 
-<BR><BR>
-<DL>
-<DT><STRONG>-channel</STRONG> integer</DT><DD> Channel on which to apply the aftertouch. Check the 
-<A href="http://jos.decoster.googlepages.com/midi.html#channels">Channels</A> section for valid channel numbers. Default value is 0.
-<BR><BR>
-</DD><DT><STRONG>-amount</STRONG> integer</DT><DD> Amount of bend. Must be an integer in the range 
+<br><br>
+<dl>
+<dt><strong>-channel</strong> integer<dd> Channel on which to apply the aftertouch. Check the 
+<a href="#channels">Channels</a> section for valid channel numbers. Default value is 0.
+<br><br>
+<dt><strong>-amount</strong> integer<dd> Amount of bend. Must be an integer in the range 
 -8192..8191. Values less than zero lower the pitch, values larger than zero 
 increase the pitch. 
-<BR><BR>
-</DD><DT><STRONG></STRONG></DT><DD>
-</DD></DL>
+<br><br>
+<dt><strong></strong><dd>
+</dl>
  
-</DD></DL>
+</dl>
 
-<H2><A name="channels">Channels</A></H2>
-<P>
+<h2><a name="channels">Channels</a></h2>
+<p>
 
 A midi file can store data for 16 channels. Valid channel numbers are in the 
 range 0..15. Real channel numbers must be specified. Often midi channels are 
 numbered starting from 1. When using this package, the first channel is channel
 zero. 
 
-</P><H2><A name="notes">Notes</A></H2>
-<P>
+<h2><a name="notes">Notes</a></h2>
+<p>
 
 A midi file knows 128 notes. They are represented by an integer in the range 
 0..127. The note with number 69 is an A with pitch of 440Hz. 
@@ -1264,36 +1280,39 @@ A midi file knows 128 notes. They are represented by an integer in the range
 Notes can be specified using their number or using an alphanumeric notation. 
 This notation has the following structure:
 
-</P><P><TABLE><TBODY><TR><TD bgcolor="black">&nbsp;</TD><TD><PRE class="sample">&lt;note&gt;&lt;modifiers&gt;&lt;octave&gt;
-</PRE></TD></TR></TBODY></TABLE></P>
+<p><table><tr><td bgcolor=black>&nbsp;</td><td><pre class='sample'>
+&lt;note&gt;&lt;modifiers&gt;&lt;octave&gt;
+</pre></td></tr></table></p>
 
-<UL>
+<ul>
 
-<LI>Valid notes are <STRONG>A</STRONG>, <STRONG>B</STRONG>, <STRONG>C</STRONG>, <STRONG>D</STRONG>, <STRONG>E</STRONG>,
-<STRONG>F</STRONG> and <STRONG>G</STRONG>. The notes can be specified in upper or lower case. 
+<li>Valid notes are <strong>A</strong>, <strong>B</strong>, <strong>C</strong>, <strong>D</strong>, <strong>E</strong>,
+<strong>F</strong> and <strong>G</strong>. The notes can be specified in upper or lower case. 
 
-<BR><BR>
-</LI><LI>Valid modifiers are <STRONG>#</STRONG> and <STRONG>b</STRONG>. The modifiers can be
+<br><br>
+<li>Valid modifiers are <strong>#</strong> and <strong>b</strong>. The modifiers can be
 specified in upper or lower case.
 
-<BR><BR>
-</LI><LI>Valid octaves are <STRONG>-1</STRONG> to 9.
+<br><br>
+<li>Valid octaves are <strong>-1</strong> to 9.
 
-</LI></UL>
+</ul>
 
 Some examples:
 
-<P><TABLE><TBODY><TR><TD bgcolor="black">&nbsp;</TD><TD><PRE class="sample">A4
+<p><table><tr><td bgcolor=black>&nbsp;</td><td><pre class='sample'>
+A4
 Bb7
 F#3
 C##4
 abb3
 e#b#b#b6
-</PRE></TD></TR></TBODY></TABLE></P>
+</pre></td></tr></table></p>
 
 When representing notes with their numbers, valid notes are:
 
-<P><TABLE><TBODY><TR><TD bgcolor="black">&nbsp;</TD><TD><PRE class="sample">Number Note  Octave
+<p><table><tr><td bgcolor=black>&nbsp;</td><td><pre class='sample'>
+Number Note  Octave
 ------ ----- ------
      0     C     -1
      1 C#/Db     -1
@@ -1423,12 +1442,13 @@ When representing notes with their numbers, valid notes are:
    125     F      9
    126 F#/Gb      9
    127     G      9
-</PRE></TD></TR></TBODY></TABLE></P>
+</pre></td></tr></table></p>
 
 When playing a note on channel 9, one of the following percussion sound names 
 can be used to specify the note:
 
-<P><TABLE><TBODY><TR><TD bgcolor="black">&nbsp;</TD><TD><PRE class="sample">Number Sound
+<p><table><tr><td bgcolor=black>&nbsp;</td><td><pre class='sample'>
+Number Sound
 ------ ------------------
     35 Acoustic Bass Drum     
     36 Bass Drum 1            
@@ -1477,17 +1497,18 @@ can be used to specify the note:
     79 Open Cuica         
     80 Mute Triangle      
     81 Open Triangle      
-</PRE></TD></TR></TBODY></TABLE></P>
+</pre></td></tr></table></p>
 
 These precussion sound names can be specified case insensitive.
 
-<H2><A name="controllers">Controllers</A></H2>
-<P>
+<h2><a name="controllers">Controllers</a></h2>
+<p>
 
 Controllers can be specified with their name or number. Controller names are 
 case insensitive. The defined controllers are:
 
-</P><P><TABLE><TBODY><TR><TD bgcolor="black">&nbsp;</TD><TD><PRE class="sample">Ctrl Description
+<p><table><tr><td bgcolor=black>&nbsp;</td><td><pre class='sample'>
+Ctrl Description
 ---- ---------------------------------------------
    0 Bank Select (coarse)                               
    1 Modulation Wheel (coarse)                          
@@ -1556,16 +1577,17 @@ case insensitive. The defined controllers are:
  125 Omni Mode On                                       
  126 Mono Operation                                     
  127 Poly Operation                                     
-</PRE></TD></TR></TBODY></TABLE></P>
+</pre></td></tr></table></p>
 
-<H2><A name="programs">Programs</A></H2>
-<P>
+<h2><a name="programs">Programs</a></h2>
+<p>
 
 Program names (also known as patches or instruments) can be specified with
 their name or number. Names are case insensitive. Programs known in the General
 Midi standard are:
 
-</P><P><TABLE><TBODY><TR><TD bgcolor="black">&nbsp;</TD><TD><PRE class="sample">Program Family               Description
+<p><table><tr><td bgcolor=black>&nbsp;</td><td><pre class='sample'>
+Program Family               Description
 ------- -------------------- -----------
       0 Piano                Acoustic Grand        
       1 Piano                Bright Acoustic       
@@ -1695,27 +1717,18 @@ Midi standard are:
     125 Sound effects        Helicopter       
     126 Sound effects        Applause         
     127 Sound effects        Gunshot          
-</PRE></TD></TR></TBODY></TABLE></P>
+</pre></td></tr></table></p>
 
 Some midi devices may provide different drum kits for channel 9. General midi 
 provides only one. 
   
 
 
-<H2><A name="keywords">KEYWORDS</A></H2>
-<P>
+<h2><a name="keywords">KEYWORDS</a></h2>
+<p>
 midi
-</P><H2><A name="copyright">COPYRIGHT</A></H2>
-<P>
-Copyright © 2006-2008 Jos Decoster &lt;jos.decoster@gmail.com&gt;<BR>
+<h2><a name="copyright">COPYRIGHT</a></h2>
+<p>
+Copyright &copy; 2006-2008 Jos Decoster &lt;jos.decoster@gmail.com&gt;<br>
+</body></html>
 
-<SCRIPT src="./tclmidi_files/urchin.js" type="text/javascript">
-</SCRIPT>
-<SCRIPT type="text/javascript">
-_uacct = "UA-1434497-1";
-urchinTracker();
-</SCRIPT>
-
-
-
-</P></BODY></HTML>
