@@ -235,13 +235,13 @@ int StreamOutObjCmd(ClientData     clientData,
 	  return TCL_ERROR;
       }
 
-      if (objc > 0 && Tcl_GetIntFromObj(interp, objv[2], &i0) != TCL_OK)
+      if (objc > 2 && Tcl_GetIntFromObj(interp, objv[2], &i0) != TCL_OK)
 	  return TCL_ERROR;
       
-      if (objc > 1 && Tcl_GetIntFromObj(interp, objv[3], &i1) != TCL_OK)
+      if (objc > 3 && Tcl_GetIntFromObj(interp, objv[3], &i1) != TCL_OK)
 	  return TCL_ERROR;
       
-      if (objc > 2 && Tcl_GetIntFromObj(interp, objv[4], &i2) != TCL_OK)
+      if (objc > 4 && Tcl_GetIntFromObj(interp, objv[4], &i2) != TCL_OK)
 	  return TCL_ERROR;
       
       b0 = i0 & 0Xff;

@@ -26,7 +26,7 @@ proc ::tseq::close_dev { dev } {
 }
 
 proc ::tseq::change_prog { dev channel prog } {
-    $dev short [expr {0xbf + $channel}] [expr {$prog - 1}]
+    $dev short [expr {0xbf + $channel}] $prog
 }
 
 proc ::tseq::set_volume { dev channel h l } {
